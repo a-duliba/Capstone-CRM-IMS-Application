@@ -1,5 +1,41 @@
 import User from "../mongodb/models/user.js";
+import bcrypt from 'bcryptjs';
 
+const register = async (req, res) => {
+    const { username, password } = req.body;
+
+    // Check if username already exists
+    const userExists = await User.findOne({ username });
+    if (userExists) return res.status(400).json({ message: 'Username already exists' });
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create new user
+    const newUser = await User.create({
+        username,
+        password: hashedPassword,
+    });
+
+    res.status(200).json(newUser);
+};
+
+const login = async (req, res) => {
+    const { username, password } = req.body;
+
+    // Check if user exists
+    const user = await User.findOne({ username });
+    if (!user) return res.status(400).json({ message: 'Invalid username or password' });
+
+    // Check password
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) return res.status(400).json({ message: 'Invalid username or password' });
+
+    // Create token
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(200).json({ token });
+};
 
 const getAllUsers = async (req, res) => {
     try {
@@ -57,4 +93,4 @@ const getUserInfoByID = async (req, res) => {
 };
 
 
-export { getAllUsers, createUser, getUserInfoByID };
+export { register, login, getAllUsers, createUser, getUserInfoByID };
