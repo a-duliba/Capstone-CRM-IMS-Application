@@ -10,9 +10,7 @@ import {
 
 /* imports for side bar icons */
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
-import ChatBubbleOutline from "@mui/icons-material/ChatBubbleOutline";
 import PeopleAltOutlined from "@mui/icons-material/PeopleAltOutlined";
-import StarOutlineRounded from "@mui/icons-material/StarOutlineRounded";
 import VillaOutlined from "@mui/icons-material/VillaOutlined";
 
 import routerProvider from "@pankod/refine-react-router-v6";
@@ -36,6 +34,7 @@ import {
   EditProperty,
 } from "pages";
 
+import { Register } from "pages/register-page";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -148,20 +147,16 @@ function App() {
               icon: <PeopleAltOutlined />,
           },
           {
-              name: "reviews",
-              list: Home,
-              icon: <StarOutlineRounded />,
-          },
-          {
-              name: "messages",
-              list: Home,
-              icon: <ChatBubbleOutline />,
-          },
-          {
               name: "my-profile",
               options: { label: "My Profile " },
               list: MyProfile,
               icon: <AccountCircleOutlined />,
+          },
+          {
+            name: "register",
+            list: Register,
+            options: { label: "Register" },
+            icon: <AccountCircleOutlined />,
           },
           ]}
           //each of these are imports to other components
