@@ -14,11 +14,20 @@ export const Register: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-        const response = await axios.post('/api/register', { name, email, username, password });
-        navigate('/login'); // Navigate to login page
+      const response = await axios.post('/api/register', { name, email, username, password });
+      if (response.status === 200 && response.data.success) {
+        // Registration was successful, navigate to login page
+        navigate('/login');
+      } else {
+        // Registration failed, display error message
+        // Replace this with your preferred method of displaying error messages
+        alert('Registration failed, please try again');
+      }
     } catch (error) {
-        console.error(error);
-        // Handle error
+      console.error(error);
+      // Registration failed, display error message
+      // Replace this with your preferred method of displaying error messages
+      alert('Registration failed, please try again');
     }
   };
 

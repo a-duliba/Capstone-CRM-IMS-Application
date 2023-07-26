@@ -2,7 +2,7 @@ import User from "../mongodb/models/user.js";
 import bcrypt from 'bcryptjs';
 
 const register = async (req, res) => {
-    const { username, password } = req.body;
+    const { name, email, username, password } = req.body;
 
     // Check if username already exists
     const userExists = await User.findOne({ username });
@@ -13,6 +13,8 @@ const register = async (req, res) => {
 
     // Create new user
     const newUser = await User.create({
+        name, 
+        email,
         username,
         password: hashedPassword,
     });
