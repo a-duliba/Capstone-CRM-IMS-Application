@@ -1,4 +1,3 @@
-import { useLogin } from "@pankod/refine-core";
 import { Box, Container, TextField, Button, Typography } from "@pankod/refine-mui";
 import { useState } from "react";
 import axios from 'axios';
@@ -21,13 +20,13 @@ export const Register: React.FC = () => {
       } else {
         // Registration failed, display error message
         // Replace this with your preferred method of displaying error messages
-        alert('Registration failed, please try again');
+        alert('Registration failed, please try again 1st issue');
       }
     } catch (error) {
       console.error(error);
       // Registration failed, display error message
       // Replace this with your preferred method of displaying error messages
-      alert('Registration failed, please try again');
+      alert('Registration failed, please try again 2nd issue');
     }
   };
 

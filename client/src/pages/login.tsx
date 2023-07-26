@@ -2,7 +2,6 @@ import { useLogin } from "@pankod/refine-core";
 import { Box, Container, TextField, Button, Typography } from "@pankod/refine-mui";
 import { useEffect, useRef, useState} from "react";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import { CredentialResponse } from "../interfaces/google";
@@ -11,19 +10,23 @@ export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-        const response = await axios.post('/api/login', { username, password });
+      const response = await axios.post('/api/login', { username, password });
+      if (response.status === 200) {
+        // Login was successful, store the token in local storage
         localStorage.setItem('token', response.data.token);
-        navigate('/'); //maybe add /home
+        // Use the login function from refine to navigate to the home page
+        login(response.data);
+      }
     } catch (error) {
-        console.error(error);
-        // Here you can handle the error, for example, show a message to the user
+      console.error(error);
+      // Here you can handle the error, for example, show a message to the user
     }
   };
+  
 
   const GoogleButton = (): JSX.Element => {
     const divRef = useRef<HTMLDivElement>(null);
