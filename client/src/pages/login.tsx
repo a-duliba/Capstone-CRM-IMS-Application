@@ -1,11 +1,20 @@
 import { useLogin } from "@pankod/refine-core";
 import { Box, Container, TextField, Button, Typography } from "@pankod/refine-mui";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState} from "react";
+import axios from 'axios';
 
 import { CredentialResponse } from "../interfaces/google";
 
 export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const response = await axios.post('/api/login', { username, password });
+    localStorage.setItem('token', response.data.token);
+  };
 
   const GoogleButton = (): JSX.Element => {
     const divRef = useRef<HTMLDivElement>(null);
@@ -71,16 +80,18 @@ export const Login: React.FC = () => {
 
           <Box mt={4}>
             {/* Login Form */}
-            <form>
-              <TextField label="Username" variant="outlined" fullWidth sx={{ mb: 2 }} />
+            <form onSubmit={handleSubmit}>
+              <TextField label="Username" variant="outlined" fullWidth sx={{ mb: 2 }} value={username} onChange={(e) => setUsername(e.target.value)} />
               <TextField
                 label="Password"
                 variant="outlined"
                 fullWidth
                 type="password"
                 sx={{ mb: 2 }}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
-              <Button variant="contained" fullWidth sx={{ '&:hover': { backgroundColor: '#4CAF50' } }}>
+              <Button type="submit" variant="contained" fullWidth sx={{ '&:hover': { backgroundColor: '#4CAF50' } }}>
                 Submit
               </Button>
             </form>
