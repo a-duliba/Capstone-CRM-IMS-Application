@@ -1,49 +1,8 @@
 import User from "../mongodb/models/user.js";
-import bcrypt from 'bcryptjs';
-
-const register = async (req, res) => {
-    try {
-        const { name, email, username, password } = req.body;
-
-        // Check if username already exists
-        const userExists = await User.findOne({ username });
-        if (userExists) return res.status(200).json(userExists);
-
-        // Create new user
-        const newUser = await User.create({
-            name, 
-            email,
-            username,
-            password,
-        });
-
-        res.status(200).json(newUser);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-};
-
-const login = async (req, res) => {
-    const { username, password } = req.body;
-
-    // Check if user exists
-    const user = await User.findOne({ username });
-    if (!user) return res.status(400).json({ message: 'Invalid username or password' });
-
-    // Check password
-    const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) return res.status(400).json({ message: 'Invalid username or password' });
-
-    // Create token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
-    res.status(200).json({ token });
-};
 
 const getAllUsers = async (req, res) => {
     try {
         const users = await User.find({}).limit(req.query._end);
-
 
         res.status(200).json(users);
     } catch (error) {
@@ -51,17 +10,13 @@ const getAllUsers = async (req, res) => {
     }
 };
 
-
-const createUser = async (req, res) => { //this is a function creating a user or not if already exists. try for what we want, catch for execptions
+const createUser = async (req, res) => { //this is a function creating a user or not if already exists. try for what we want, catch for execptions 
     try {
-        const { name, email, avatar } = req.body;
+        const { name, email, avatar } = req.body; 
 
-
-        const userExists = await User.findOne({ email });
-
+        const userExists = await User.findOne({ email }); 
 
         if (userExists) return res.status(200).json(userExists);
-
 
         const newUser = await User.create({
             name,
@@ -69,21 +24,17 @@ const createUser = async (req, res) => { //this is a function creating a user or
             avatar,
         });
 
-
         res.status(200).json(newUser);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-
 const getUserInfoByID = async (req, res) => {
     try {
         const { id } = req.params;
 
-
         const user = await User.findOne({ _id: id }).populate("allProperties");
-
 
         if (user) {
             res.status(200).json(user);
@@ -95,5 +46,4 @@ const getUserInfoByID = async (req, res) => {
     }
 };
 
-
-export { register, login, getAllUsers, createUser, getUserInfoByID };
+export { getAllUsers, createUser, getUserInfoByID };

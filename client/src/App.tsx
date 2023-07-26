@@ -34,8 +34,6 @@ import {
   EditProperty,
 } from "pages";
 
-import { Register } from "pages/register-page";
-
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
   const token = localStorage.getItem("token");
@@ -151,12 +149,6 @@ function App() {
               options: { label: "My Profile " },
               list: MyProfile,
               icon: <AccountCircleOutlined />,
-          },
-          {
-            name: "register",
-            list: Register,
-            options: { label: "Register" },
-            icon: <AccountCircleOutlined />,
           },
           ]}
           //each of these are imports to other components

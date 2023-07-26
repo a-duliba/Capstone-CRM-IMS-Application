@@ -1,33 +1,20 @@
 import { useLogin } from "@pankod/refine-core";
 import { Box, Container, TextField, Button, Typography } from "@pankod/refine-mui";
 import { useEffect, useRef, useState} from "react";
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 import { CredentialResponse } from "../interfaces/google";
 
 export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const { mutate: loginDefault } = useLogin();
+  const [username, setUsername] = useState('test');
+  const [password, setPassword] = useState('test');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('/api/login', { username, password });
-      if (response.status === 200) {
-        // Login was successful, store the token in local storage
-        localStorage.setItem('token', response.data.token);
-        // Use the login function from refine to navigate to the home page
-        login(response.data);
-      }
-    } catch (error) {
-      console.error(error);
-      // Here you can handle the error, for example, show a message to the user
-    }
+  const handleSubmit = () => {
+    const loginData = { username: 'test', password: 'test' };
+    loginDefault(loginData);
   };
   
-
   const GoogleButton = (): JSX.Element => {
     const divRef = useRef<HTMLDivElement>(null);
 
@@ -107,13 +94,6 @@ export const Login: React.FC = () => {
                 Submit
               </Button>
             </form>
-
-            {/* Register Link */}
-            <Box mt={2}>
-              <Typography variant="body1">
-                Don't have an account? <Link to="/register">Register</Link>
-              </Typography>
-            </Box>
 
             {/* Google Login Button */}
             <Box mt={2}>

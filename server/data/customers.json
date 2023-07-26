@@ -1,0 +1,24 @@
+[
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "avatar": "https://example.com/avatar/john.jpg",
+      "noOfProperties": 5
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "avatar": "https://example.com/avatar/jane.jpg",
+      "noOfProperties": 8
+    },
+    {
+      "id": "3",
+      "name": "Michael Johnson",
+      "email": "michael.johnson@example.com",
+      "avatar": "https://example.com/avatar/michael.jpg",
+      "noOfProperties": 3
+    }
+  ]
+  
