@@ -6,9 +6,9 @@ import { useGetIdentity } from "@pankod/refine-core";
 import { FieldValues, useForm } from "@pankod/refine-react-hook-form";
 import { useNavigate } from "@pankod/refine-react-router-v6"; 
 
-import Form from "components/common/Form";
+import CustomerForm from 'components/common/CustomerForm';
 
-const CreateProduct = () => {
+const CreateCustomer = () => {
   
   /*
   const { id } = useParams<{ id: string }>();
@@ -44,8 +44,8 @@ const CreateProduct = () => {
   };
 
   return (
-    <Form
-          type="Create"
+    <CustomerForm
+          type="Edit"
           register={register}
           onFinish={onFinish}
           formLoading={formLoading}
@@ -55,4 +55,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
+export default CreateCustomer;

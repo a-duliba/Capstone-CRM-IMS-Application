@@ -2,19 +2,19 @@ import { Place } from "@mui/icons-material";
 import { Link } from "@pankod/refine-react-router-v6";
 import { Typography, Box, Card, CardMedia, CardContent, Stack } from "@pankod/refine-mui";
 
-import { PropertyCardProps } from "interfaces/property";
+import { ProductCardProps } from "interfaces/products";
 
-const PropertyCard = ({
-  id,
-  title,
-  location,
-  price,
-  photo,
-}: PropertyCardProps) => {
+const ProductCard = ({
+  ProductID,
+  ProductName,
+  ProductDescription,
+  ProductPrice,
+  ProductQuantity
+}: ProductCardProps) => {
   return (
       <Card
           component={Link}
-          to={`/properties/show/${id}`}
+          to={`/product/show/${ProductID}`}
           sx={{
               maxWidth: "500px",
               padding: "10px",
@@ -25,14 +25,6 @@ const PropertyCard = ({
           }}
           elevation={0}
       >
-          <CardMedia
-              component="img"
-              width="100%"
-              height={210}
-              image={photo}
-              alt="card image"
-              sx={{ borderRadius: "10px" }}
-          />
           <CardContent
               sx={{
                   display: "flex",
@@ -44,7 +36,7 @@ const PropertyCard = ({
           >
               <Stack direction="column" gap={1}>
                   <Typography fontSize={16} fontWeight={500} color="#11142d">
-                      {title}
+                      {ProductName}
                   </Typography>
                   <Stack direction="row" gap={0.5} alignItems="flex-start">
                       <Place
@@ -55,7 +47,7 @@ const PropertyCard = ({
                           }}
                       />
                       <Typography fontSize={14} color="#808191">
-                          {location}
+                          {ProductDescription}
                       </Typography>
                   </Stack>
               </Stack>
@@ -67,7 +59,10 @@ const PropertyCard = ({
                   height="fit-content"
               >
                   <Typography fontSize={12} fontWeight={600} color="#475be8">
-                      ${price}
+                      ${ProductPrice}
+                  </Typography>
+                  <Typography fontSize={12} fontWeight={600} color="#475be8">
+                      ${ProductQuantity}
                   </Typography>
               </Box>
           </CardContent>
@@ -75,6 +70,4 @@ const PropertyCard = ({
   );
 };
 
-export default PropertyCard;
-
-
+export default ProductCard;

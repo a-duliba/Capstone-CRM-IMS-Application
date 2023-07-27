@@ -26,19 +26,14 @@ import { parseJwt } from "utils/parse-jwt";
 import { 
   Login, 
   Home,
-  Agents,
-  MyProfile,
-  PropertyDetails,
-  AllProperties,
-  CreateProperty,
-  AgentProfile,
-  EditProperty,
 } from "pages";
 
 import Customers from "pages/customers";
 import Products from "pages/products";
 import EditProduct from "pages/edit-product";
+import EditCustomer from "pages/edit-customer";
 import CreateProduct from "pages/create-product";
+import CreateCustomer from "pages/create-customer";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -138,8 +133,10 @@ function App() {
           resources={[
             {
               name: "customers",
-              list: Customers, // Import the Customers component at the top of the file
-              icon: <PeopleAltOutlined />, // Use an appropriate icon
+              list: Customers, 
+              edit: EditCustomer,
+              create: CreateCustomer,
+              icon: <PeopleAltOutlined />, 
             },
             {
               name: "products",
@@ -148,28 +145,7 @@ function App() {
               create: CreateProduct,
               icon: <PostAddOutlined />, 
             },
-            {
-              name: "properties", //all the files in pages for their functionality
-              list: AllProperties, 
-              show: PropertyDetails,
-              create: CreateProperty, //refine audo implements CRUD functionality you just have in link the pages and design UI
-              edit: EditProperty, 
-              icon: <VillaOutlined />,
-          },
-          {
-              name: "agents",
-              list: Agents,
-              show: AgentProfile,
-              icon: <PeopleAltOutlined />,
-          },
-          {
-              name: "my-profile",
-              options: { label: "My Profile " },
-              list: MyProfile,
-              icon: <AccountCircleOutlined />,
-          },
           ]}
-          //each of these are imports to other components
           Title={Title}
           Sider={Sider}
           Layout={Layout}

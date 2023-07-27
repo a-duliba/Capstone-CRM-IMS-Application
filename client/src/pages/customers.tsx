@@ -5,7 +5,11 @@ import { Table, TableCell, TableHead, TableRow, TableBody, TableContainer, Paper
 import Button from '@mui/material/Button';
 import { Edit as EditIcon } from '@mui/icons-material';
 import { Delete as DeleteIcon } from '@mui/icons-material';
-import { Create as CreateIcon } from '@mui/icons-material';
+import { Add } from "@mui/icons-material";
+import { useNavigate } from '@pankod/refine-react-router-v6'; 
+import {CustomButton } from "components";
+import EditButton from 'components/common/EditButton';
+import DeleteButton from 'components/common/DeleteButton';
 
 const Customers = () => {
   const [customers, setCustomers] = useState<Customer[]>([
@@ -33,6 +37,8 @@ const Customers = () => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const navigate = useNavigate(); 
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -97,17 +103,23 @@ const Customers = () => {
     },
     {
       id: 'actions',
-      label: 'Actions',
+      label: 'Actions', //onClick={() => deleteCustomer(record.CustomerID)
       format: (value: any, record: Customer) => (
-        <div>
-        <Link to={`/edit-customer/${record.CustomerID}`}> {/* Assuming the route for editing a customer is "/edit-customer/:id" */}
-        <Button variant="outlined" style={{ color: 'blue', borderColor: 'blue', marginRight: '8px' }} startIcon={<EditIcon />}>
-              Edit
-            </Button>
-          </Link>
-          <Button variant="outlined" style={{ color: 'red', borderColor: 'red' }} startIcon={<DeleteIcon />} onClick={() => deleteCustomer(record.CustomerID)}>
-            Delete
-          </Button>
+        <div style={{ display: 'flex', gap: '8px' }}>
+        <EditButton
+            title="Edit"
+            handleClick={() => navigate("/customers/edit")}
+            backgroundColor="#475be8"
+            color="#fcfcfc"
+            icon={<EditIcon />}
+          />
+          <DeleteButton
+            title="Delete"
+            handleClick={() => navigate("/customers/edit")} //navigates for now but need to make delete
+            backgroundColor="#ff1744" 
+            color="#fcfcfc"
+            icon={<DeleteIcon />}
+          />
       </div>
       ),
     },
@@ -117,11 +129,13 @@ const Customers = () => {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Customers</h1>
-        <Link to="/create-customer">
-          <Button variant="contained" color="primary" startIcon={<CreateIcon />}>
-            Create Customer
-          </Button>
-        </Link>
+          <CustomButton
+            title="Add Product"
+            handleClick={() => navigate("/customers/create")}
+            backgroundColor="#4caf50" 
+            color="#fcfcfc"
+            icon={<Add />}
+          />
       </div>
       <TableContainer component={Paper}>
         <Table>

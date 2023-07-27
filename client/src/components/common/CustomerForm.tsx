@@ -44,7 +44,7 @@ const Form = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter product name
+                            Enter customer name
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -65,7 +65,29 @@ const Form = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter Description
+                            Enter phone number here
+                        </FormHelperText>
+                        <TextField
+                            fullWidth
+                            required
+                            id="outlined-basic"
+                            color="info"
+                            variant="outlined"
+                            defaultValue={product?.ProductDescription}
+                            {...register("ProductDescription", { required: true })}
+                        />
+                    </FormControl>
+
+                    <FormControl>
+                        <FormHelperText
+                            sx={{
+                                fontWeight: 500,
+                                margin: "10px 0",
+                                fontSize: 16,
+                                color: "#11142d",
+                            }}
+                        >
+                            Enter email here
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -88,7 +110,7 @@ const Form = ({
                                     color: "#11142d",
                                 }}
                             >
-                                Enter product price
+                                Enter purchase history here
                             </FormHelperText>
                             <TextField
                                 fullWidth
@@ -110,7 +132,7 @@ const Form = ({
                                     color: "#11142d",
                                 }}
                             >
-                                Enter product quantity
+                                Enter account balance here
                             </FormHelperText>
                             <TextField
                                 fullWidth
@@ -124,6 +146,51 @@ const Form = ({
                             />
                         </FormControl>
                     </Stack>
+
+                    <FormControl>
+                        <FormHelperText
+                            sx={{
+                                fontWeight: 500,
+                                margin: "10px 0",
+                                fontSize: 16,
+                                color: "#11142d",
+                            }}
+                        >
+                            Enter shipping information here
+                        </FormHelperText>
+                        <TextField
+                            fullWidth
+                            required
+                            id="outlined-basic"
+                            color="info"
+                            variant="outlined"
+                            defaultValue={product?.ProductDescription}
+                            {...register("ProductDescription", { required: true })}
+                        />
+                    </FormControl>
+
+                    <FormControl>
+                        <FormHelperText
+                            sx={{
+                                fontWeight: 500,
+                                margin: "10px 0",
+                                fontSize: 16,
+                                color: "#11142d",
+                            }}
+                        >
+                            Enter perferred method of communication here
+                        </FormHelperText>
+                        <TextField
+                            fullWidth
+                            required
+                            id="outlined-basic"
+                            color="info"
+                            variant="outlined"
+                            defaultValue={product?.ProductDescription}
+                            {...register("ProductDescription", { required: true })}
+                        />
+                    </FormControl>
+
                     <Stack direction="row" gap={4}>
                         <CustomButton
                             type="submit"
