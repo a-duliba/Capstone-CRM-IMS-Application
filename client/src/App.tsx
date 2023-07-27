@@ -12,6 +12,7 @@ import {
 import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
 import PeopleAltOutlined from "@mui/icons-material/PeopleAltOutlined";
 import VillaOutlined from "@mui/icons-material/VillaOutlined";
+import { PostAddOutlined } from "@mui/icons-material";
 
 import routerProvider from "@pankod/refine-react-router-v6";
 import dataProvider from "@pankod/refine-simple-rest";
@@ -33,6 +34,9 @@ import {
   AgentProfile,
   EditProperty,
 } from "pages";
+
+import Customers from "pages/customers";
+import Products from "pages/products";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -130,6 +134,16 @@ function App() {
           ReadyPage={ReadyPage}
           catchAll={<ErrorComponent />}
           resources={[
+            {
+              name: "customers",
+              list: Customers, // Import the Customers component at the top of the file
+              icon: <PeopleAltOutlined />, // Use an appropriate icon
+            },
+            {
+              name: "products",
+              list: Products,
+              icon: <PostAddOutlined />, 
+            },
             {
               name: "properties", //all the files in pages for their functionality
               list: AllProperties, 
