@@ -1,3 +1,5 @@
+import { Product } from "./products"
+
 export interface CustomButtonProps {
     type?: string,
     title: string,
@@ -36,4 +38,5 @@ export interface FormProps {
     handleImageChange: (file) => void,
     onFinishHandler: (data: FieldValues) => Promise<void> | void,
     propertyImage: { name: string, url: string },
+    product?: Product; // Add this line
 }

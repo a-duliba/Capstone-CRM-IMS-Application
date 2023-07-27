@@ -37,6 +37,8 @@ import {
 
 import Customers from "pages/customers";
 import Products from "pages/products";
+import EditProduct from "pages/edit-product";
+import CreateProduct from "pages/create-product";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -142,6 +144,8 @@ function App() {
             {
               name: "products",
               list: Products,
+              edit: EditProduct,
+              create: CreateProduct,
               icon: <PostAddOutlined />, 
             },
             {
