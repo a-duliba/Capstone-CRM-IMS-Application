@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Customer } from 'interfaces/customers';
-import { Table, TableCell, TableHead, TableRow, TableBody, Button } from '@pankod/refine-mui';
+import { Table, TableCell, TableHead, TableRow, TableBody, TableContainer, Paper, TablePagination } from '@mui/material';
+import Button from '@mui/material/Button';
 import { Edit as EditIcon } from '@mui/icons-material';
 import { Delete as DeleteIcon } from '@mui/icons-material';
 import { Create as CreateIcon } from '@mui/icons-material';
@@ -29,6 +30,18 @@ const Customers = () => {
       PreferredCommunicationMethod: "email",
     },
   ]);
+
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
 /* use this rather than test data when ready
   useEffect(() => {
@@ -87,15 +100,15 @@ const Customers = () => {
       label: 'Actions',
       format: (value: any, record: Customer) => (
         <div>
-          <Link to={`/edit-product/${record.CustomerID}`}>
-            <Button variant="outlined" startIcon={<EditIcon />}>
+        <Link to={`/edit-customer/${record.CustomerID}`}> {/* Assuming the route for editing a customer is "/edit-customer/:id" */}
+        <Button variant="outlined" style={{ color: 'blue', borderColor: 'blue', marginRight: '8px' }} startIcon={<EditIcon />}>
               Edit
             </Button>
           </Link>
-          <Button variant="outlined" color="secondary" startIcon={<DeleteIcon />} onClick={() => deleteCustomer(record.CustomerID)}>
+          <Button variant="outlined" style={{ color: 'red', borderColor: 'red' }} startIcon={<DeleteIcon />} onClick={() => deleteCustomer(record.CustomerID)}>
             Delete
           </Button>
-        </div>
+      </div>
       ),
     },
   ];
@@ -104,30 +117,41 @@ const Customers = () => {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Customers</h1>
-        <Link to="/create-product">
+        <Link to="/create-customer">
           <Button variant="contained" color="primary" startIcon={<CreateIcon />}>
             Create Customer
           </Button>
         </Link>
       </div>
-      <Table>
-        <TableHead>
-          <TableRow>
-            {columns.map((column) => (
-              <TableCell key={column.id}>{column.label}</TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {customers.map((customer) => (
-            <TableRow key={customer.CustomerID}>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
               {columns.map((column) => (
-                <TableCell key={column.id}>{column.format ? column.format(customer[column.id], customer) : customer[column.id]}</TableCell>
+                <TableCell key={column.id}>{column.label}</TableCell>
               ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {customers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((customer) => (
+              <TableRow key={customer.CustomerID}>
+                {columns.map((column) => (
+                  <TableCell key={column.id}>{column.format ? column.format(customer[column.id], customer) : customer[column.id]}</TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={customers.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </TableContainer>
     </div>
   );
 };
