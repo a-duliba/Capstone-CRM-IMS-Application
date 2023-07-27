@@ -4,4 +4,6 @@ export interface Product {
     ProductDescription: string;
     ProductPrice: string;
     ProductQuantity: string;
+
+    [key: string]: any; //Index signature to allow any string as an index
   }
