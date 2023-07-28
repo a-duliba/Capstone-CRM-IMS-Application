@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { FormProps } from "interfaces/common";
 import CustomButton from "./CustomButton";
 
-const Form = ({
+const CustomerForm = ({
     type,
     register,
     handleSubmit,
@@ -21,7 +21,7 @@ const Form = ({
     return (
         <Box>
             <Typography fontSize={25} fontWeight={700} color="#11142d">
-                {type} a Product
+                {type} a Customer
             </Typography>
 
             <Box mt={2.5} borderRadius="15px" padding="20px" bgcolor="#fcfcfc">
@@ -208,4 +208,4 @@ const Form = ({
     );
 };
 
-export default Form;
+export default CustomerForm;

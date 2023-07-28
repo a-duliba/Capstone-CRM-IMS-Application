@@ -45,7 +45,7 @@ const CreateCustomer = () => {
 
   return (
     <CustomerForm
-          type="Edit"
+          type="Create"
           register={register}
           onFinish={onFinish}
           formLoading={formLoading}
