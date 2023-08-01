@@ -11,6 +11,6 @@ const CustomerSchema = new mongoose.Schema({
     PreferredCommunicationMethod: { type: String, required: true },
 });
 
-const customerModel = mongoose.model("Customer", CustomerSchema);
+const Customer = mongoose.model("Customer", CustomerSchema);
 
-export default customerModel;
+export default Customer;

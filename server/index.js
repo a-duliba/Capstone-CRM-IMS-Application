@@ -7,6 +7,11 @@ import userRouter from './routes/user.routes.js';
 import customerRoutes from './routes/customer.routes.js';
 import productRoutes from './routes/product.routes.js';
 
+import Customer from './mongodb/models/customer.js';
+import Product from './mongodb/models/product.js';
+import { dataCustomers } from './data/customer.js';
+import { dataProducts } from './data/product.js'
+
 dotenv.config();
 
 const app = express();
@@ -26,6 +31,10 @@ const startServer = async () => {
     connectDB(process.env.MONGODB_URL);
 
     app.listen(8080, () => console.log('Server started on port http://localhost:8080'));
+
+    Customer.insertMany(dataCustomers);
+    Product.insertMany(dataProducts);
+
   } catch (error) {
     console.log(error);
   }
