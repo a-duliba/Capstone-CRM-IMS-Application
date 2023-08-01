@@ -12,22 +12,7 @@ import EditButton from 'components/common/EditButton';
 import DeleteButton from 'components/common/DeleteButton';
 
 const Products = () => {
-  const [products, setProducts] = useState<Product[]>([
-    {
-      ProductID: '1',
-      ProductName: 'Product 1',
-      ProductDescription: 'This is the first product',
-      ProductPrice: '10.99',
-      ProductQuantity: '10',
-    },
-    {
-      ProductID: '2',
-      ProductName: 'Product 2',
-      ProductDescription: 'This is the second product',
-      ProductPrice: '20.99',
-      ProductQuantity: '59',
-    },
-  ]);
+  const [products, setProducts] = useState<Product[]>([ ]);
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -43,12 +28,11 @@ const Products = () => {
     setPage(0);
   };
 
-/* use this rather than test data when ready
   useEffect(() => {
     fetch('http://localhost:8080/api/v1/products') 
       .then(response => response.json())
       .then(data => setProducts(data));
-  }, []); */
+  }, []); 
 
   const deleteProduct = (id: string) => {
     // Implement the logic for deleting a product

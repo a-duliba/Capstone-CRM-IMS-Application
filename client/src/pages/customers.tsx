@@ -12,28 +12,7 @@ import EditButton from 'components/common/EditButton';
 import DeleteButton from 'components/common/DeleteButton';
 
 const Customers = () => {
-  const [customers, setCustomers] = useState<Customer[]>([
-    {
-      CustomerID: "1",
-      CustomerName: "John Doe",
-      PhoneNumber: "123-4567-8999",
-      Email: "test@email.com", 
-      PurchaseHistory: "test", 
-      AccountBalance: "10,000,000$", 
-      ShippingInformation: "123 apple street",
-      PreferredCommunicationMethod: "email",
-    },
-    {
-      CustomerID: "2",
-      CustomerName: "Kim Erikson",
-      PhoneNumber: "123-4567-8999",
-      Email: "test@email.com", 
-      PurchaseHistory: "test", 
-      AccountBalance: "10,000,000$", 
-      ShippingInformation: "123 apple street",
-      PreferredCommunicationMethod: "email",
-    },
-  ]);
+  const [customers, setCustomers] = useState<Customer[]>([ ]);
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -49,12 +28,11 @@ const Customers = () => {
     setPage(0);
   };
 
-/* use this rather than test data when ready
   useEffect(() => {
     fetch('http://localhost:8080/api/v1/customers') 
       .then(response => response.json())
       .then(data => setCustomers(data));
-  }, []); */
+  }, []); 
 
   const deleteCustomer = (id: string) => {
     // Implement the logic for deleting a product
