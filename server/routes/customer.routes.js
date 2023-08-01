@@ -3,8 +3,10 @@ import { getAllCustomers, createCustomer } from '../controllers/customer.control
 
 const router = express.Router();
 
-router.get('/', getAllCustomers);
-router.post('/', createCustomer);
+router.get('/api/customers', getAllCustomers); //idk
+router.post('/api/customers', createCustomer); //idk
+router.route("/").get(getAllCustomers);
+router.route("/").post(createCustomer);
 
 // Add other routes as necessary
 

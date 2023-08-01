@@ -1,3 +1,4 @@
+/*
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Product } from 'interfaces/products';
@@ -5,65 +6,55 @@ import { TextField, Button } from '@mui/material';
 import { useGetIdentity } from "@pankod/refine-core";
 import { FieldValues, useForm } from "@pankod/refine-react-hook-form";
 import { useNavigate } from "@pankod/refine-react-router-v6"; 
-
 import Form from "components/common/Form";
-
-const CreateProduct = () => {
-  
-  /*
-  const { id } = useParams<{ id: string }>();
-  const [product, setProduct] = useState<Product | null>(null);
-  const { register, handleSubmit, formState: { isSubmitting } } = useForm();
-
-  useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/${id}`)
-      .then(response => response.json())
-      .then(data => setProduct(data));
-  }, [id]); 
-  
-  const navigate = useNavigate(); 
-
- const { data: user } = useGetIdentity();
+import axios from 'axios';
 */
 
-  const {
-      refineCore: { onFinish, formLoading },
-      register,
-      handleSubmit,
-  } = useForm(); 
- 
+import React, { ChangeEvent, FormEvent, useState } from 'react'; // Add ChangeEvent and FormEvent here
+import Form from 'components/common/Form';
 
-  const onFinishHandler = async (data: FieldValues) => {
+const CreateProduct = () => {
+  const [productData, setProductData] = useState({
+    ProductID: '',
+    ProductName: '',
+    ProductDescription: '',
+    ProductPrice: '',
+    ProductQuantity: ''
+  });
 
-    const response = await fetch('/api/v1/products', { //replace with actual
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setProductData({
+      ...productData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (data: FormEvent<HTMLFormElement>) => {
+    const response = await fetch('/api/v1/products', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     });
-  
+
     if (response.ok) {
       const responseData = await response.json();
       console.log(responseData);
     } else {
-      console.error('Failed to send customer data');
+      console.error('Failed to send product data');
     }
-  };
-
-  const handleSave = async (data: Product) => {
-    // Implement the logic for creating a product
   };
 
   return (
     <Form
-          type="Create"
-          register={register}
-          onFinish={onFinish}
-          formLoading={formLoading}
-          handleSubmit={handleSubmit}
-          onFinishHandler={onFinishHandler}
-      />
+      type="Create"
+      register={handleInputChange}
+      handleSubmit={handleSubmit}
+      formLoading={false}
+      onFinishHandler={handleSubmit}
+      onInputChange={handleInputChange} // Add this line
+    />
   );
 };
 

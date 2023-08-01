@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/customers', customerRoutes);
-app.use('/api//v1/products', productRoutes);
+app.use('/api/v1/products', productRoutes);
 
 const startServer = async () => {
   try {

@@ -3,8 +3,8 @@ import { getAllProducts, createProduct } from '../controllers/product.controller
 
 const router = express.Router();
 
-router.get('/', getAllProducts); //idk
-router.post('/', createProduct); //idk
+router.get('/api/products', getAllProducts); //idk
+router.post('/api/products', createProduct); //idk
 router.route("/").get(getAllProducts);
 router.route("/").post(createProduct);
 

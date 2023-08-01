@@ -7,6 +7,7 @@ import { FieldValues, useForm } from "@pankod/refine-react-hook-form";
 import { useNavigate } from "@pankod/refine-react-router-v6"; 
 
 import CustomerForm from 'components/common/CustomerForm';
+import axios from 'axios';
 
 const CreateCustomer = () => {
   
@@ -33,7 +34,7 @@ const CreateCustomer = () => {
   } = useForm(); 
  
 
-  const onFinishHandler = async (data: FieldValues) => {
+  /*const onFinishHandler = async (data: FieldValues) => {
 
     const response = await fetch('/api/v1/customers', { //replace with actual
       method: 'POST',
@@ -49,7 +50,16 @@ const CreateCustomer = () => {
     } else {
       console.error('Failed to send customer data');
     }
-  };
+  }; */
+
+  const onFinishHandler = async (data: FieldValues) => {
+    try {
+        const response = await axios.post('/api/customers', data);
+        console.log(response.data);
+    } catch (error) {
+        console.error(error);
+    }
+};
 
   const handleSave = async (data: Product) => {
     // Implement the logic for creating a product
