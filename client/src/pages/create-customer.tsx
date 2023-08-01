@@ -21,9 +21,11 @@ const CreateCustomer = () => {
       .then(data => setProduct(data));
   }, [id]); 
   
-  const navigate = useNavigate(); */
+  const navigate = useNavigate(); 
 
   const { data: user } = useGetIdentity();
+*/
+
   const {
       refineCore: { onFinish, formLoading },
       register,
@@ -33,10 +35,20 @@ const CreateCustomer = () => {
 
   const onFinishHandler = async (data: FieldValues) => {
 
-      await onFinish({
-          ...data,
-          email: user.email,
-      });
+    const response = await fetch('/api/v1/customers', { //replace with actual
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+  
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log(responseData);
+    } else {
+      console.error('Failed to send customer data');
+    }
   };
 
   const handleSave = async (data: Product) => {

@@ -130,7 +130,7 @@ const Customers = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>Customers</h1>
           <CustomButton
-            title="Add Product"
+            title="Add Customer"
             handleClick={() => navigate("/customers/create")}
             backgroundColor="#4caf50" 
             color="#fcfcfc"

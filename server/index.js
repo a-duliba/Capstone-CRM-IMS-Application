@@ -4,7 +4,8 @@ import cors from 'cors';
 
 import connectDB from './mongodb/connect.js';
 import userRouter from './routes/user.routes.js';
-import propertyRouter from './routes/property.routes.js';
+import customerRoutes from './routes/customer.routes.js';
+import productRoutes from './routes/product.routes.js';
 
 dotenv.config();
 
@@ -17,7 +18,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/properties', propertyRouter);
+app.use('/api/v1/customers', customerRoutes);
+app.use('/api//v1/products', productRoutes);
 
 const startServer = async () => {
   try {
