@@ -17,8 +17,8 @@ const PieChart = ({ title, value, series, colors }: PieChartProps) => { //typesc
             py={2}
             gap={2}
             borderRadius="15px"
-            minHeight="110px"
-            width="fit-content"
+            minHeight="218px"
+            width="340px"
         >
             <Stack direction="column">
                 <Typography fontSize={14} color="#808191">

@@ -3,20 +3,20 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { ApexOptions } from "apexcharts";
 import Chart from "react-apexcharts";
+import { YearlySales, MonthlyData } from "interfaces/yearly-sales";
+import regression from 'regression';
 
-const totalRevenueData = [183, 124, 115, 85, 143, 143, 96, 95, 84, 72, 44, 108];
-const nextYearPredictedSalesData = [108, 98, 80, 75, 135, 140, 105, 100, 85, 70, 55, 130];
 
 const TotalRevenueChartOptions: ApexOptions = {
   chart: {
     type: "line",
     toolbar: {
-      show: false,
+      show: true,
     },
   },
   stroke: {
     curve: "smooth",
-    width: 4, // Increase the width to make it a solid line
+    width: 3, // Increase the width to make it a solid line
     dashArray: [0], // Set dash array to [0] for a solid line
   },
   xaxis: {
@@ -43,23 +43,38 @@ const TotalRevenueChartOptions: ApexOptions = {
 };
 
 const LinearRegression = () => {
-  const [showTotalRevenue, setShowTotalRevenue] = useState(true);
-  const [showPredictedSales, setShowPredictedSales] = useState(false);
+  const [showTotalRevenueData, setShowTotalRevenueData] = useState(true);
+  const [showPredictedSalesData, setShowPredictedSalesData] = useState(false);
+  const [salesData, setSalesData] = useState<YearlySales[]>([]);
+  const monthlySalesData: [number, number][] = salesData.length > 0 ? salesData[0].monthlyData.map
+    ((data: MonthlyData, index: number) => [index + 1, data.totalSales]) : [];
+
+    // Perform a linear regression on your sales data
+  const result = regression.linear(monthlySalesData);
+
+  // Extract the predicted sales data
+  const predictedSalesData = result.points.map(point => point[1]);
 
   const handleShowTotalRevenue = () => {
-    setShowTotalRevenue(true);
-    setShowPredictedSales(false);
+    setShowTotalRevenueData(true);
+    setShowPredictedSalesData(false);
   };
 
   const handleShowPredictedSales = () => {
-    setShowTotalRevenue(false);
-    setShowPredictedSales(true);
+    setShowTotalRevenueData(false);
+    setShowPredictedSalesData(true);
   };
 
   const handleShowBoth = () => {
-    setShowTotalRevenue(true);
-    setShowPredictedSales(true);
+    setShowTotalRevenueData(true);
+    setShowPredictedSalesData(true);
   };
+
+  useEffect(() => {
+    fetch('http://localhost:8080/api/v1/sales') 
+      .then(response => response.json())
+      .then(data => setSalesData(data));
+  }, []);
 
   return (
     <Box
@@ -71,26 +86,25 @@ const LinearRegression = () => {
       flexDirection="column"
       borderRadius="15px"
     >
-      <Typography fontSize={18} fontWeight={600} color="#11142d">
+      <Typography fontSize={24} fontWeight={700} color="#11142d">
         Total Sales
       </Typography>
 
-         
       <Chart
-        options={TotalRevenueChartOptions}
-        series={[
-          {
-            name: "Total Revenue",
-            data: showTotalRevenue ? totalRevenueData : [],
-          },
-          {
-            name: "Next Year's Predicted Sales",
-            data: showPredictedSales ? nextYearPredictedSalesData : [],
-          },
-        ]}
-        type="line"
-        height={300} // Set an appropriate height for the chart
-      />
+      options={TotalRevenueChartOptions}
+      series={[
+        {
+          name: "Monthly Sales",
+          data: showTotalRevenueData ? monthlySalesData.map(point => point[1]) : [],
+        },
+        {
+          name: "Next Year's Predicted Sales",
+          data: showPredictedSalesData ? predictedSalesData : [],
+        },
+      ]}
+      type="line"
+      height={300}
+    />
 
     <div style={{ display: "flex", justifyContent: "space-around", marginTop: "1rem" }}>
       <button onClick={handleShowTotalRevenue}>
