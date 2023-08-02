@@ -74,7 +74,7 @@ export const Login: React.FC = () => {
         >
           {/* Title */}
           <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
-            ChairCare Solution
+            ChairCare Solutions
           </Typography>
 
           <Box mt={4}>
