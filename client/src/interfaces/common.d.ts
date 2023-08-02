@@ -38,5 +38,11 @@ export interface FormProps {
     onFinishHandler: (data: FieldValues) => Promise<void> | void,
     onInputChange?: (event: ChangeEvent<HTMLInputElement>) => void, 
     product?: Product; 
-    
 }
+
+export interface SalesData {
+    totalRevenue: number;
+    predictedSales: number;
+    // Include other properties if needed
+  }
+  

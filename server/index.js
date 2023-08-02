@@ -6,11 +6,15 @@ import connectDB from './mongodb/connect.js';
 import userRouter from './routes/user.routes.js';
 import customerRoutes from './routes/customer.routes.js';
 import productRoutes from './routes/product.routes.js';
+import salesRoutes from './routes/sales.routes.js';
 
 import Customer from './mongodb/models/customer.js';
 import Product from './mongodb/models/product.js';
+import Sales from './mongodb/models/sales.js';
 import { dataCustomers } from './data/customer.js';
 import { dataProducts } from './data/product.js'
+import { dataYearlySales } from './data/yearly-sales.js';
+
 
 dotenv.config();
 
@@ -25,6 +29,7 @@ app.get('/', (req, res) => {
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/customers', customerRoutes);
 app.use('/api/v1/products', productRoutes);
+app.use('/api/v1/sales', salesRoutes);
 
 const startServer = async () => {
   try {
@@ -34,6 +39,7 @@ const startServer = async () => {
 
     //Customer.insertMany(dataCustomers); use once only
     //Product.insertMany(dataProducts); use once only
+    //Sales.insertMany(dataYearlySales); use once only
 
   } catch (error) {
     console.log(error);

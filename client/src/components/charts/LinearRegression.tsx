@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { ApexOptions } from "apexcharts";
 import Chart from "react-apexcharts";
 
-// Assuming you have a data array for total revenue for each month of the year.
 const totalRevenueData = [183, 124, 115, 85, 143, 143, 96, 95, 84, 72, 44, 108];
 const nextYearPredictedSalesData = [108, 98, 80, 75, 135, 140, 105, 100, 85, 70, 55, 130];
 
@@ -76,7 +75,7 @@ const LinearRegression = () => {
         Total Sales
       </Typography>
 
-      {/* Render the line chart */}
+         
       <Chart
         options={TotalRevenueChartOptions}
         series={[
@@ -93,19 +92,19 @@ const LinearRegression = () => {
         height={300} // Set an appropriate height for the chart
       />
 
-      <div style={{ display: "flex", justifyContent: "space-around", marginTop: "1rem" }}>
-        <button onClick={handleShowTotalRevenue}>
-          Show Total Revenue
-        </button>
-        <button onClick={handleShowPredictedSales}>
-          Show Predicted Sales
-        </button>
-        <button onClick={handleShowBoth}>
-          Show Both
-        </button>
-      </div>
-    </Box>
-  );
+    <div style={{ display: "flex", justifyContent: "space-around", marginTop: "1rem" }}>
+      <button onClick={handleShowTotalRevenue}>
+        Show Total Revenue
+      </button>
+      <button onClick={handleShowPredictedSales}>
+        Show Predicted Sales
+      </button>
+      <button onClick={handleShowBoth}>
+        Show Both
+      </button>
+    </div>
+  </Box>
+);
 };
 
 export default LinearRegression;

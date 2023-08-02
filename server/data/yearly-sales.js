@@ -1,4 +1,4 @@
-export const yearlySales = [
+export const dataYearlySales = [
     {
       totalCustomers: 5251,
       yearlySalesTotal: 65152,
@@ -445,15 +445,5 @@ export const yearlySales = [
         { date: "2021-12-30", totalSales: 2525, totalUnits: 858 },
         { date: "2021-12-31", totalSales: 1326, totalUnits: 360 },
       ],
-      salesByCategory: {
-        shoes: 6515,
-        clothing: 22803,
-        accessories: 16288,
-        misc: 19545,
-      },
-      _id: "636ffd4fc7195768677097d7",
-      createdAt: "1983-01-10T18:53:05.874Z",
-      updatedAt: "2019-07-06T05:12:27.736Z",
-      __v: 36729,
     },
   ];
