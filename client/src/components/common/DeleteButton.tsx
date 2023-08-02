@@ -16,14 +16,14 @@ const DeleteButton = ({
       type={type === "submit" ? "submit" : "button"}
       sx={{
         flex: fullWidth ? 1 : "unset",
-        padding: "10px 15px",
+        padding: "6px 12px", // Smaller padding
         width: fullWidth ? "100%" : "fit-content",
-        minWidth: 130,
+        minWidth: 100, // Smaller minWidth
         backgroundColor,
         color,
-        fontSize: 16,
+        fontSize: 14, // Smaller fontSize
         fontWeight: 600,
-        gap: "10px",
+        gap: "8px", // Smaller gap
         textTransform: "capitalize",
         "&:hover": {
           opacity: 0.9,
