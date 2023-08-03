@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Product } from 'interfaces/products';
+import { Customer } from 'interfaces/customers';
 import { TextField, Button } from '@mui/material';
 import { useGetIdentity } from "@pankod/refine-core";
 import { FieldValues, useForm } from "@pankod/refine-react-hook-form";
@@ -10,18 +11,14 @@ import CustomerForm from 'components/common/CustomerForm';
 
 const EditCustomer = () => {
   
-  /*
-  const { id } = useParams<{ id: string }>();
-  const [product, setProduct] = useState<Product | null>(null);
-  const { register, handleSubmit, formState: { isSubmitting } } = useForm();
+  const { CustomerID } = useParams<{ CustomerID: string }>();
+  const [customer, setCustomer] = useState<Customer | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/${id}`)
+    fetch(`http://localhost:8080/api/v1/customers/${CustomerID}`)
       .then(response => response.json())
-      .then(data => setProduct(data));
-  }, [id]); 
-  
-  const navigate = useNavigate(); */
+      .then(data => setCustomer(data));
+  }, [CustomerID]);
 
   const { data: user } = useGetIdentity();
   const {
@@ -33,8 +30,8 @@ const EditCustomer = () => {
 
   const onFinishHandler = async (data: FieldValues) => {
 
-    const response = await fetch('/api/v1/customers', { //replace with actual
-      method: 'POST',
+    const response = await fetch(`/api/v1/customers/${CustomerID}`, { 
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -62,6 +59,8 @@ const EditCustomer = () => {
           formLoading={formLoading}
           handleSubmit={handleSubmit}
           onFinishHandler={onFinishHandler}
+          // @ts-ignore
+          customer={customer}
       />
   );
 };

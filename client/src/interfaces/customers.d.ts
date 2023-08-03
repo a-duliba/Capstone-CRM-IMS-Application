@@ -21,4 +21,15 @@ export interface Customer {
     ShippingInformation: string,
     PreferredCommunicationMethod: string,
 }
+
+export interface FormProps {
+  type: string,
+  register: any,
+  onFinish?: (values: FieldValues) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>,
+  formLoading: boolean,
+  handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
+  onFinishHandler: (data: FieldValues) => Promise<void> | void,
+  onInputChange?: (event: ChangeEvent<HTMLInputElement>) => void, 
+  customer?: Customer; //imports all the stuff from Customer above
+}
   

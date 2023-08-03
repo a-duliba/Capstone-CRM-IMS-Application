@@ -86,10 +86,12 @@ const Customers = () => {
         <div style={{ display: 'flex', gap: '8px' }}>
         <EditButton
             title="Edit"
-            handleClick={() => navigate("/customers/edit")}
+            //handleClick={() => navigate("/customers/edit")}
+            handleClick={() => navigate(`/customers/edit/${record.CustomerID}`)}
             backgroundColor="#475be8"
             color="#fcfcfc"
             icon={<EditIcon />}
+            
           />
           <DeleteButton
             title="Delete"

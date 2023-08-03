@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
-import { FormProps } from "interfaces/common";
+import { FormProps } from "interfaces/customers";
 import CustomButton from "./CustomButton";
 
 const CustomerForm = ({
@@ -16,7 +16,7 @@ const CustomerForm = ({
     handleSubmit,
     formLoading,
     onFinishHandler,
-    product,
+    customer,
 }: FormProps) => {
     return (
         <Box>
@@ -52,8 +52,9 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={product?.ProductName}
-                            {...register("ProductName", { required: true })}
+                            defaultValue={customer?.CustomerName}
+                            {...register("CustomerName", { required: true })}
+                            
                         />
                     </FormControl>
                     <FormControl>
@@ -73,8 +74,8 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={product?.ProductDescription}
-                            {...register("ProductDescription", { required: true })}
+                            defaultValue={customer?.PhoneNumber}
+                            {...register("PhoneNumber", { required: true })}
                         />
                     </FormControl>
 
@@ -95,8 +96,8 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={product?.ProductDescription}
-                            {...register("ProductDescription", { required: true })}
+                            defaultValue={customer?.Email}
+                            {...register("Email", { required: true })}
                         />
                     </FormControl>
 
@@ -119,8 +120,8 @@ const CustomerForm = ({
                                 color="info"
                                 type="number"
                                 variant="outlined"
-                                defaultValue={product?.ProductPrice}
-                                {...register("ProductPrice", { required: true })}
+                                defaultValue={customer?.PurchaseHistory}
+                                {...register("PurchaseHistory", { required: true })}
                             />
                         </FormControl>
                         <FormControl>
@@ -141,8 +142,8 @@ const CustomerForm = ({
                                 color="info"
                                 type="number"
                                 variant="outlined"
-                                defaultValue={product?.ProductQuantity}
-                                {...register("ProductQuantity", { required: true })}
+                                defaultValue={customer?.AccountBalance}
+                                {...register("AccountBalance", { required: true })}
                             />
                         </FormControl>
                     </Stack>
@@ -164,8 +165,8 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={product?.ProductDescription}
-                            {...register("ProductDescription", { required: true })}
+                            defaultValue={customer?.ShippingInformation}
+                            {...register("ShippingInformation", { required: true })}
                         />
                     </FormControl>
 
@@ -186,8 +187,8 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={product?.ProductDescription}
-                            {...register("ProductDescription", { required: true })}
+                            defaultValue={customer?.PreferredCommunicationMethod}
+                            {...register("PreferredCommunicationMethod", { required: true })}
                         />
                     </FormControl>
 

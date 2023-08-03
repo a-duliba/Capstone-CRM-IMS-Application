@@ -71,14 +71,14 @@ const Products = () => {
         <div style={{ display: 'flex', gap: '8px' }}>
           <EditButton
             title="Edit"
-            handleClick={() => navigate("/customers/edit")}
+            handleClick={() => navigate("/products/edit")}
             backgroundColor="#475be8"
             color="#fcfcfc"
             icon={<EditIcon />}
           />
           <DeleteButton
             title="Delete"
-            handleClick={() => navigate("/customers/edit")} //navigates for now but need to make delete
+            handleClick={() => navigate("/products/edit")} //navigates for now but need to make delete
             backgroundColor="#ff1744" 
             color="#fcfcfc"
             icon={<DeleteIcon />}

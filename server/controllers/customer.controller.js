@@ -43,6 +43,15 @@ const createCustomer = async (req, res) => {
     }
 };
 
+const updateItem = async (req, res) => {
+    try {
+      const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      res.status(200).json(updatedItem);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+
 // Add other methods as necessary
 
-export { getAllCustomers, createCustomer };
+export { getAllCustomers, createCustomer, updateItem };

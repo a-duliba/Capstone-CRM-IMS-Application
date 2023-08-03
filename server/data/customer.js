@@ -20,7 +20,7 @@ export const dataCustomers = [
       PreferredCommunicationMethod: "email"
     },
     {
-      CustomerID: "1",
+      CustomerID: "3",
       CustomerName: "Test User",
       PhoneNumber: "123-456-7890",
       Email: "TestUser@example.com",
