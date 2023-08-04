@@ -36,7 +36,18 @@ export interface FormProps {
     formLoading: boolean,
     handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
     onFinishHandler: (data: FieldValues) => Promise<void> | void,
+    defaultValues?: CustomerValues;
 }
+
+export interface CustomerValues {
+    CustomerName?: string;
+    PhoneNumber?: string;
+    Email?: string;
+    PurchaseHistory?: string;
+    AccountBalance?: string;
+    ShippingInformation?: string;
+    PreferredCommunicationMethod?: string;
+  }
 
 export interface SalesData {
     totalRevenue: number;

@@ -16,6 +16,7 @@ const CustomerForm = ({
     handleSubmit,
     formLoading,
     onFinishHandler,
+    defaultValues,
 }: FormProps) => {
     return (
         <Box>
@@ -52,6 +53,8 @@ const CustomerForm = ({
                             color="info"
                             variant="outlined"
                             {...register("CustomerName", { required: true })}
+                            // @ts-ignore
+                            defaultValue={defaultValues?.CustomerName}
                             
                         />
                     </FormControl>
@@ -73,6 +76,8 @@ const CustomerForm = ({
                             color="info"
                             variant="outlined"
                             {...register("PhoneNumber", { required: true })}
+                            // @ts-ignore
+                            defaultValue={defaultValues?.PhoneNumber}
                         />
                     </FormControl>
 
@@ -94,6 +99,8 @@ const CustomerForm = ({
                             color="info"
                             variant="outlined"
                             {...register("Email", { required: true })}
+                            // @ts-ignore
+                            defaultValue={defaultValues?.Email}
                         />
                     </FormControl>
 
@@ -117,6 +124,8 @@ const CustomerForm = ({
                                 type="number"
                                 variant="outlined"
                                 {...register("PurchaseHistory", { required: true })}
+                                // @ts-ignore
+                                defaultValue={defaultValues?.PurchaseHistory}
                             />
                         </FormControl>
                         <FormControl>
@@ -138,6 +147,8 @@ const CustomerForm = ({
                                 type="number"
                                 variant="outlined"
                                 {...register("AccountBalance", { required: true })}
+                                // @ts-ignore
+                                defaultValue={defaultValues?.AccountBalance}
                             />
                         </FormControl>
                     </Stack>
@@ -160,6 +171,8 @@ const CustomerForm = ({
                             color="info"
                             variant="outlined"
                             {...register("ShippingInformation", { required: true })}
+                            // @ts-ignore
+                            defaultValue={defaultValues?.ShippingInformation}
                         />
                     </FormControl>
 
@@ -181,6 +194,8 @@ const CustomerForm = ({
                             color="info"
                             variant="outlined"
                             {...register("PreferredCommunicationMethod", { required: true })}
+                            // @ts-ignore
+                            defaultValue={defaultValues?.PreferredCommunicationMethod}
                         />
                     </FormControl>
 

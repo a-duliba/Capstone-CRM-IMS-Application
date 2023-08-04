@@ -29,5 +29,7 @@ export interface FormProps {
   formLoading: boolean,
   handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
   onFinishHandler: (data: FieldValues) => Promise<void> | void,
+  defaultValues?: Customer;
 }
+
   
