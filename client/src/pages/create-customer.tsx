@@ -10,60 +10,17 @@ import CustomerForm from 'components/common/CustomerForm';
 import axios from 'axios';
 
 const CreateCustomer = () => {
-  
-  /*
-  const { id } = useParams<{ id: string }>();
-  const [product, setProduct] = useState<Product | null>(null);
-  const { register, handleSubmit, formState: { isSubmitting } } = useForm();
-
-  useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/${id}`)
-      .then(response => response.json())
-      .then(data => setProduct(data));
-  }, [id]); 
-  
-  const navigate = useNavigate(); 
-
-  const { data: user } = useGetIdentity();
-*/
 
   const {
       refineCore: { onFinish, formLoading },
       register,
       handleSubmit,
   } = useForm(); 
- 
-
-  /*const onFinishHandler = async (data: FieldValues) => {
-
-    const response = await fetch('/api/v1/customers', { //replace with actual
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
-  
-    if (response.ok) {
-      const responseData = await response.json();
-      console.log(responseData);
-    } else {
-      console.error('Failed to send customer data');
-    }
-  }; */
 
   const onFinishHandler = async (data: FieldValues) => {
-    try {
-        const response = await axios.post('/api/customers', data);
-        console.log(response.data);
-    } catch (error) {
-        console.error(error);
-    }
+
 };
 
-  const handleSave = async (data: Product) => {
-    // Implement the logic for creating a product
-  };
 
   return (
     <CustomerForm

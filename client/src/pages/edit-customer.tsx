@@ -10,17 +10,7 @@ import { useNavigate } from "@pankod/refine-react-router-v6";
 import CustomerForm from 'components/common/CustomerForm';
 
 const EditCustomer = () => {
-  
-  const { CustomerID } = useParams<{ CustomerID: string }>();
-  const [customer, setCustomer] = useState<Customer | null>(null);
-
-  useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/customers/${CustomerID}`)
-      .then(response => response.json())
-      .then(data => setCustomer(data));
-  }, [CustomerID]);
-
-  const { data: user } = useGetIdentity();
+ 
   const {
       refineCore: { onFinish, formLoading },
       register,
@@ -30,37 +20,16 @@ const EditCustomer = () => {
 
   const onFinishHandler = async (data: FieldValues) => {
 
-    const response = await fetch(`/api/v1/customers/${CustomerID}`, { 
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
-  
-    if (response.ok) {
-      const responseData = await response.json();
-      console.log(responseData);
-    } else {
-      console.error('Failed to send customer data');
-    }
   };
-
-  const handleSave = async (data: Product) => {
-    // Implement the logic for creating a product
-  };
-
 
   return (
     <CustomerForm
-          type="Edit"
-          register={register}
-          onFinish={onFinish}
-          formLoading={formLoading}
-          handleSubmit={handleSubmit}
-          onFinishHandler={onFinishHandler}
-          // @ts-ignore
-          customer={customer}
+    type="Edit"
+    register={register}
+    onFinish={onFinish}
+    formLoading={formLoading}
+    handleSubmit={handleSubmit}
+    onFinishHandler={onFinishHandler}
       />
   );
 };

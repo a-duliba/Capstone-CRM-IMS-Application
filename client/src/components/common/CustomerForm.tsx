@@ -16,7 +16,6 @@ const CustomerForm = ({
     handleSubmit,
     formLoading,
     onFinishHandler,
-    customer,
 }: FormProps) => {
     return (
         <Box>
@@ -52,7 +51,6 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={customer?.CustomerName}
                             {...register("CustomerName", { required: true })}
                             
                         />
@@ -74,7 +72,6 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={customer?.PhoneNumber}
                             {...register("PhoneNumber", { required: true })}
                         />
                     </FormControl>
@@ -96,7 +93,6 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={customer?.Email}
                             {...register("Email", { required: true })}
                         />
                     </FormControl>
@@ -120,7 +116,6 @@ const CustomerForm = ({
                                 color="info"
                                 type="number"
                                 variant="outlined"
-                                defaultValue={customer?.PurchaseHistory}
                                 {...register("PurchaseHistory", { required: true })}
                             />
                         </FormControl>
@@ -142,7 +137,6 @@ const CustomerForm = ({
                                 color="info"
                                 type="number"
                                 variant="outlined"
-                                defaultValue={customer?.AccountBalance}
                                 {...register("AccountBalance", { required: true })}
                             />
                         </FormControl>
@@ -165,7 +159,6 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={customer?.ShippingInformation}
                             {...register("ShippingInformation", { required: true })}
                         />
                     </FormControl>
@@ -187,7 +180,6 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={customer?.PreferredCommunicationMethod}
                             {...register("PreferredCommunicationMethod", { required: true })}
                         />
                     </FormControl>

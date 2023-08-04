@@ -16,8 +16,6 @@ const Form = ({
     handleSubmit,
     formLoading,
     onFinishHandler,
-    onInputChange,
-    product,
 }: FormProps) => {
     return (
         <Box>
@@ -53,10 +51,8 @@ const Form = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={product?.ProductName}
                             {...register("ProductName", {
-                                required: true,
-                                onChange: onInputChange // Add this line
+                                required: true
                               })} 
                         />
                     </FormControl>
@@ -77,10 +73,8 @@ const Form = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            defaultValue={product?.ProductDescription}
                             {...register("ProductName", {
-                                required: true,
-                                onChange: onInputChange // Add this line
+                                required: true
                               })}
                         />
                     </FormControl>
@@ -104,10 +98,8 @@ const Form = ({
                                 color="info"
                                 type="number"
                                 variant="outlined"
-                                defaultValue={product?.ProductPrice}
                                 {...register("ProductName", {
-                                    required: true,
-                                    onChange: onInputChange // Add this line
+                                    required: true
                                   })}
                             />
                         </FormControl>
@@ -129,10 +121,8 @@ const Form = ({
                                 color="info"
                                 type="number"
                                 variant="outlined"
-                                defaultValue={product?.ProductQuantity}
                                 {...register("ProductName", {
-                                    required: true,
-                                    onChange: onInputChange // Add this line
+                                    required: true
                                   })}
                             />
                         </FormControl>
