@@ -14,8 +14,9 @@ const CreateCustomer = () => {
   } = useForm(); 
 
   const onFinishHandler = async (data: FieldValues) => {
+    const { CustomerID, ...otherData } = data; // Exclude the CustomerID field
     try {
-        const response = await axios.post('http://localhost:8080/api/v1/customers', data);
+        const response = await axios.post('http://localhost:8080/api/v1/customers', otherData); // Send otherData instead of data
         if (response.status >= 200 && response.status < 300) {
             navigate('/customers');
         } else {

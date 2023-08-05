@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const CustomerSchema = new mongoose.Schema({
-    CustomerID: { type: String, required: true },
     CustomerName: { type: String, required: true },
     PhoneNumber:{ type: String, required: true },
     Email: { type: String, required: true },

@@ -44,28 +44,6 @@ const CustomerForm = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter customer ID
-                        </FormHelperText>
-                        <TextField
-                            fullWidth
-                            required
-                            id="outlined-basic"
-                            color="info"
-                            variant="outlined"
-                            defaultValue={initialData?.CustomerID}
-                            {...register("CustomerID", { required: true })}
-                            
-                        />
-                    </FormControl>
-                    <FormControl>
-                        <FormHelperText
-                            sx={{
-                                fontWeight: 500,
-                                margin: "10px 0",
-                                fontSize: 16,
-                                color: "#11142d",
-                            }}
-                        >
                             Enter customer name
                         </FormHelperText>
                         <TextField

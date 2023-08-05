@@ -41,15 +41,15 @@ const Customers = () => {
     .then(response => response.json())
     .then(data => {
       // Update the customers state to remove the deleted customer
-      setCustomers(customers.filter(customer => customer.CustomerID !== id));
+      setCustomers(customers.filter(customer => customer._id !== id));
     });
   };
 
   const columns = [
     {
-      id: 'id',
+      id: '_id',
       label: 'id',
-      format: (value: any, record: Customer) => record.CustomerID
+      format: (value: any, record: Customer) => record._id
     },
     {
       id: 'name',
@@ -101,8 +101,8 @@ const Customers = () => {
         />
         <DeleteButton
           title="Delete"
-          handleClick={() => deleteCustomer(record.CustomerID)} 
-          backgroundColor="#ff1744" 
+          handleClick={() => deleteCustomer(record._id)}
+          backgroundColor="#ff1744"
           color="#fcfcfc"
           icon={<DeleteIcon />}
         />
@@ -134,7 +134,7 @@ const Customers = () => {
           </TableHead>
           <TableBody>
             {customers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((customer) => (
-              <TableRow key={customer.CustomerID}>
+              <TableRow key={customer._id}>
                 {columns.map((column) => (
                   <TableCell key={column.id}>{column.format ? column.format(customer[column.id], customer) : customer[column.id]}</TableCell>
                 ))}

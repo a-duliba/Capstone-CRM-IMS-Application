@@ -1,5 +1,4 @@
 export interface Customer {
-    CustomerID: string,
     CustomerName: string,
     PhoneNumber: string,
     Email: string, 
@@ -12,7 +11,6 @@ export interface Customer {
   }
 
   export interface FormValues {
-    CustomerID: string,
     CustomerName: string,
     PhoneNumber: string,
     Email: string, 

@@ -29,20 +29,23 @@ const updateCustomer = async (req, res) => {
 
 
   const deleteCustomer = async (req, res) => {
-    const customerID = req.params.id;
+    const id = req.params.id;
   
     try {
-      const customer = await Customer.findOne({ CustomerID: customerID });
+      const customer = await Customer.findById(id);
   
       if (!customer) {
         return res.status(404).json({ message: 'Customer not found' });
       }
   
-      await customer.remove();
+      await Customer.deleteOne({ _id: id });
       res.status(200).json({ message: 'Customer deleted successfully' });
     } catch (error) {
+      console.error(error);
       res.status(500).json({ message: error.message });
     }
-  };
+};
+
+
   
   export { getAllCustomers, createCustomer, updateCustomer, deleteCustomer };
