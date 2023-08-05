@@ -3,9 +3,10 @@ import { getAllCustomers, createCustomer, updateCustomer, deleteCustomer } from 
 
 const router = express.Router();
 
-router.get('/', getAllCustomers); //idk
-router.post('/', createCustomer); //idk
+router.get('/', getAllCustomers); 
+router.post('/', createCustomer); 
 router.delete('/:id', deleteCustomer); 
+router.put('/:id', updateCustomer);
 
 
 //router for update

@@ -24,8 +24,22 @@ const createCustomer = async (req, res) => {
 };
 
 const updateCustomer = async (req, res) => {
+  const id = req.params.id;
+  const customerData = req.body;
 
-  };
+  try {
+    const updatedCustomer = await Customer.findByIdAndUpdate(id, customerData, { new: true });
+
+    if (!updatedCustomer) {
+      return res.status(404).json({ message: 'Customer not found' });
+    }
+
+    res.status(200).json(updatedCustomer);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
 
   const deleteCustomer = async (req, res) => {
