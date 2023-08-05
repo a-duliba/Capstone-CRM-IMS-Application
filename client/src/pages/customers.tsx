@@ -35,7 +35,14 @@ const Customers = () => {
   }, []); 
 
   const deleteCustomer = (id: string) => {
-    // Implement the logic for deleting a product
+    fetch(`http://localhost:8080/api/v1/customers/${id}`, {
+      method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Update the customers state to remove the deleted customer
+      setCustomers(customers.filter(customer => customer.CustomerID !== id));
+    });
   };
 
   const columns = [
@@ -94,7 +101,7 @@ const Customers = () => {
         />
         <DeleteButton
           title="Delete"
-          handleClick={() => navigate("/customers/edit")} 
+          handleClick={() => deleteCustomer(record.CustomerID)} 
           backgroundColor="#ff1744" 
           color="#fcfcfc"
           icon={<DeleteIcon />}

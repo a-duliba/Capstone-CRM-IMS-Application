@@ -11,7 +11,16 @@ const getAllCustomers = async (req, res) => {
 };
 
 const createCustomer = async (req, res) => {
+    const customerData = req.body;
 
+    const newCustomer = new Customer(customerData);
+
+    try {
+        await newCustomer.save();
+        res.status(201).json(newCustomer);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
 };
 
 const updateCustomer = async (req, res) => {
@@ -19,6 +28,21 @@ const updateCustomer = async (req, res) => {
   };
 
 
-// Add other methods as necessary
-
-export { getAllCustomers, createCustomer, updateCustomer };
+  const deleteCustomer = async (req, res) => {
+    const customerID = req.params.id;
+  
+    try {
+      const customer = await Customer.findOne({ CustomerID: customerID });
+  
+      if (!customer) {
+        return res.status(404).json({ message: 'Customer not found' });
+      }
+  
+      await customer.remove();
+      res.status(200).json({ message: 'Customer deleted successfully' });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
+  export { getAllCustomers, createCustomer, updateCustomer, deleteCustomer };
