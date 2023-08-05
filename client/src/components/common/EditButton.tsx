@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 
-import { CustomButtonProps } from "interfaces/common";
+import { CustomButtonProps } from "interfaces/customers";
 
 const EditButton = ({
   type,
@@ -10,6 +10,7 @@ const EditButton = ({
   fullWidth,
   icon,
   handleClick,
+  data,
 }: CustomButtonProps) => {
   return (
     <Button
@@ -32,7 +33,7 @@ const EditButton = ({
         borderColor: "blue", // Add this to set the border color
       }}
       startIcon={icon} // Use the icon prop directly as the startIcon
-      onClick={handleClick}
+      onClick={() => { if (handleClick) handleClick(data); }}
     >
       {title}
     </Button>

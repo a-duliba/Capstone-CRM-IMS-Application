@@ -81,25 +81,24 @@ const Customers = () => {
     },
     {
       id: 'actions',
-      label: 'Actions', //onClick={() => deleteCustomer(record.CustomerID)
+      label: 'Actions', 
       format: (value: any, record: Customer) => (
         <div style={{ display: 'flex', gap: '8px' }}>
         <EditButton
-            title="Edit"
-            //handleClick={() => navigate("/customers/edit")}
-            handleClick={() => navigate(`/customers/edit/${record.CustomerID}`)}
-            backgroundColor="#475be8"
-            color="#fcfcfc"
-            icon={<EditIcon />}
-            
-          />
-          <DeleteButton
-            title="Delete"
-            handleClick={() => navigate("/customers/edit")} //navigates for now but need to make delete
-            backgroundColor="#ff1744" 
-            color="#fcfcfc"
-            icon={<DeleteIcon />}
-          />
+          title="Edit"
+          handleClick={() => navigate(`/customers/edit`, { state: { customer: record } })} 
+          backgroundColor="#475be8"
+          color="#fcfcfc"
+          icon={<EditIcon />}
+          data={record}
+        />
+        <DeleteButton
+          title="Delete"
+          handleClick={() => navigate("/customers/edit")} 
+          backgroundColor="#ff1744" 
+          color="#fcfcfc"
+          icon={<DeleteIcon />}
+        />
       </div>
       ),
     },

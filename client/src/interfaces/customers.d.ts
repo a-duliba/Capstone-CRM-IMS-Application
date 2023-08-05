@@ -29,7 +29,19 @@ export interface FormProps {
   formLoading: boolean,
   handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
   onFinishHandler: (data: FieldValues) => Promise<void> | void,
-  defaultValues?: Customer;
+  initialData?: Customer; // Add initialData as an optional property of type Customer
+}
+
+export interface CustomButtonProps {
+  type?: string,
+  title: string,
+  backgroundColor: string,
+  color: string,
+  fullWidth?: boolean,
+  icon?: ReactNode,
+  disabled?: boolean,
+  handleClick?: (data?: any) => void
+  data?: any
 }
 
   

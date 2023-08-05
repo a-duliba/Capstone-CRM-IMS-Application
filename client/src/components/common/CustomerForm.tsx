@@ -16,7 +16,7 @@ const CustomerForm = ({
     handleSubmit,
     formLoading,
     onFinishHandler,
-    defaultValues,
+    initialData, 
 }: FormProps) => {
     return (
         <Box>
@@ -52,9 +52,8 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
+                            defaultValue={initialData?.CustomerName}
                             {...register("CustomerName", { required: true })}
-                            // @ts-ignore
-                            defaultValue={defaultValues?.CustomerName}
                             
                         />
                     </FormControl>
@@ -75,9 +74,8 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
+                            defaultValue={initialData?.PhoneNumber}
                             {...register("PhoneNumber", { required: true })}
-                            // @ts-ignore
-                            defaultValue={defaultValues?.PhoneNumber}
                         />
                     </FormControl>
 
@@ -98,9 +96,8 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
+                            defaultValue={initialData?.Email}
                             {...register("Email", { required: true })}
-                            // @ts-ignore
-                            defaultValue={defaultValues?.Email}
                         />
                     </FormControl>
 
@@ -121,11 +118,9 @@ const CustomerForm = ({
                                 required
                                 id="outlined-basic"
                                 color="info"
-                                type="number"
                                 variant="outlined"
+                                defaultValue={initialData?.PurchaseHistory}
                                 {...register("PurchaseHistory", { required: true })}
-                                // @ts-ignore
-                                defaultValue={defaultValues?.PurchaseHistory}
                             />
                         </FormControl>
                         <FormControl>
@@ -144,11 +139,9 @@ const CustomerForm = ({
                                 required
                                 id="outlined-basic"
                                 color="info"
-                                type="number"
                                 variant="outlined"
+                                defaultValue={initialData?.AccountBalance}
                                 {...register("AccountBalance", { required: true })}
-                                // @ts-ignore
-                                defaultValue={defaultValues?.AccountBalance}
                             />
                         </FormControl>
                     </Stack>
@@ -170,9 +163,8 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
+                            defaultValue={initialData?.ShippingInformation}
                             {...register("ShippingInformation", { required: true })}
-                            // @ts-ignore
-                            defaultValue={defaultValues?.ShippingInformation}
                         />
                     </FormControl>
 
@@ -193,20 +185,19 @@ const CustomerForm = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
+                            defaultValue={initialData?.PreferredCommunicationMethod}
                             {...register("PreferredCommunicationMethod", { required: true })}
-                            // @ts-ignore
-                            defaultValue={defaultValues?.PreferredCommunicationMethod}
                         />
                     </FormControl>
 
                     <Stack direction="row" gap={4}>
                         <CustomButton
                             type="submit"
-                            title={formLoading ? "Submitting..." : "Submit"}
+                            title={formLoading ? "Saving..." : "Save"}
                             backgroundColor="#475be8"
                             color="#fcfcfc"
                         />
-                        <Button variant="contained" component={Link} to="/products">
+                        <Button variant="contained" component={Link} to="/customers">
                             Cancel
                         </Button>
                     </Stack>

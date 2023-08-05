@@ -8,7 +8,8 @@ export interface CustomButtonProps {
     fullWidth?: boolean,
     icon?: ReactNode,
     disabled?: boolean,
-    handleClick?: () => void
+    handleClick?: (data?: any) => void
+    data?: any
 }
 
 export interface ProfileProps {
