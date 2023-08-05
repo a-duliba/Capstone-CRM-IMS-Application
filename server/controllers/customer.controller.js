@@ -11,36 +11,7 @@ const getAllCustomers = async (req, res) => {
 };
 
 const createCustomer = async (req, res) => {
-    try {
-        const { 
-            CustomerID, 
-            CustomerName, 
-            PhoneNumber, 
-            Email, 
-            PurchaseHistory, 
-            AccountBalance, 
-            ShippingInformation, 
-            PreferredCommunicationMethod   
-        } = req.body;
-        const customerExists = await Customer.findOne({ CustomerName });
 
-        if (customerExists) return res.status(200).json(customerExists);
-
-        const newCustomer = await Customer.create({ 
-            CustomerID, 
-            CustomerName, 
-            PhoneNumber, 
-            Email, 
-            PurchaseHistory, 
-            AccountBalance, 
-            ShippingInformation, 
-            PreferredCommunicationMethod   
-        });
-
-        res.status(200).json(newCustomer);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
 };
 
 const updateCustomer = async (req, res) => {
