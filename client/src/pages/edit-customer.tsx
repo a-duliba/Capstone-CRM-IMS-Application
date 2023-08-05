@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Customer, FormValues } from 'interfaces/customers';
-import { TextField, Button } from '@mui/material';
-import { useGetIdentity } from "@pankod/refine-core";
 import { FieldValues, useForm } from "@pankod/refine-react-hook-form";
-import { useNavigate } from "@pankod/refine-react-router-v6";
 import CustomerForm from 'components/common/CustomerForm';
 
 const EditCustomer = () => {
-  // Fetch the location state using useLocation and cast to the desired type
+
   const location = useLocation() as { state: { customer?: Customer } };
   const customerData: Customer | undefined = location.state?.customer;
-  const navigate = useNavigate();
 
   const {
     refineCore: { onFinish, formLoading },
