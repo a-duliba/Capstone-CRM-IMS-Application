@@ -7,7 +7,6 @@ export interface Product {
     yearlyTotalSoldUnits: Number;
     yearlySalesTotal: Number;
 
-
     [key: string]: any; 
 }
 

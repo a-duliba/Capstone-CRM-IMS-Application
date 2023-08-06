@@ -3,11 +3,10 @@ import ReactApexChart from "react-apexcharts";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import ArrowCircleUpRounded from "@mui/icons-material/ArrowCircleUpRounded";
 import { YearlySales, MonthlyData } from "interfaces/yearly-sales";
 import regression from 'regression';
 import { ApexOptions } from 'apexcharts';
-
+import Button from "@mui/material/Button";
 
 const TotalSalesOptions: ApexOptions = {
   chart: {
@@ -110,20 +109,11 @@ return (
       <Typography fontSize={28} fontWeight={700} color="#11142d">
         ${totalSales.toFixed(2)}
       </Typography>
-      <Stack direction="row" alignItems="center" gap={1} width="100%">
-        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "1rem", gap: "1rem" }}>
-          <button onClick={handleShowTotalSales} style={{ margin: "0 1rem" }}>
-            Show Current Sales
-          </button>
-          <button onClick={handleShowPredictedSales} style={{ margin: "0 1rem" }}>
-            Show Predicted Sales
-          </button>
-          <button onClick={handleShowBoth} style={{ margin: "0 1rem" }}>
-            Show Both
-          </button>
-        </div>
-      </Stack>
     </Stack>
+
+    <Button onClick={handleShowTotalSales}>Show Original Sales</Button>
+    <Button onClick={handleShowPredictedSales}>Show Predicted Sales</Button>
+    <Button onClick={handleShowBoth}>Show Both</Button>
 
     <ReactApexChart
       options={TotalSalesOptions}

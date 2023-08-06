@@ -1,11 +1,11 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import { ApexOptions } from "apexcharts";
 import Chart from "react-apexcharts";
 import { YearlySales, MonthlyData } from "interfaces/yearly-sales";
 import regression from 'regression';
-
 
 const TotalSalesChartOptions: ApexOptions = {
   chart: {
@@ -90,6 +90,10 @@ const LinearRegression = () => {
         Sales by Month
       </Typography>
 
+      <Button onClick={handleShowTotalSales}>Show Original Sales</Button>
+      <Button onClick={handleShowPredictedSales}>Show Predicted Sales</Button>
+      <Button onClick={handleShowBoth}>Show Both</Button>
+
       <Chart
         options={TotalSalesChartOptions}
         series={[
@@ -105,18 +109,6 @@ const LinearRegression = () => {
         type="line"
         height={300}
       />
-
-      <div style={{ display: "flex", justifyContent: "space-around", marginTop: "1rem" }}>
-        <button onClick={handleShowTotalSales}>
-          Show Current Sales
-        </button>
-        <button onClick={handleShowPredictedSales}>
-          Show Predicted Sales
-        </button>
-        <button onClick={handleShowBoth}>
-          Show Both
-        </button>
-      </div>
     </Box>
   );
 };
