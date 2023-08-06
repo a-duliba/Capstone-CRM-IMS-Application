@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { Customer, FormValues } from 'interfaces/customers';
+import { Customer } from 'interfaces/customers';
 import { FieldValues, useForm } from "@pankod/refine-react-hook-form";
 import CustomerForm from 'components/common/CustomerForm';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +19,6 @@ const EditCustomer = () => {
 
   const onFinishHandler = async (data: FieldValues) => {
     if (!customerData) {
-      // Handle the case where customerData is undefined
       console.error('No customer data');
       return;
     }

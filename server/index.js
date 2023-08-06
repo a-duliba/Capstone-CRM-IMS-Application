@@ -37,9 +37,9 @@ const startServer = async () => {
 
     app.listen(8080, () => console.log('Server started on port http://localhost:8080'));
 
-    //Customer.insertMany(dataCustomers); //d
-    //Product.insertMany(dataProducts); use once only
-    //Sales.insertMany(dataYearlySales); use once only
+    //Customer.insertMany(dataCustomers); //use these only once to load data
+    //Product.insertMany(dataProducts); 
+    //Sales.insertMany(dataYearlySales); 
 
   } catch (error) {
     console.log(error);

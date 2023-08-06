@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Product } from 'interfaces/products';
 import { Table, TableCell, TableHead, TableRow, TableBody, TableContainer, Paper, TablePagination } from '@mui/material';
-import Button from '@mui/material/Button';
 import { Edit as EditIcon } from '@mui/icons-material';
 import { Delete as DeleteIcon } from '@mui/icons-material';
 import { Add } from "@mui/icons-material";
 import { useNavigate } from '@pankod/refine-react-router-v6'; 
 import {CustomButton } from "components";
-import EditButton from 'components/common/EditButton';
+import EditButtonProduct from 'components/common/EditButtonProdcut';
 import DeleteButton from 'components/common/DeleteButton';
 
 const Products = () => {
@@ -35,14 +33,21 @@ const Products = () => {
   }, []); 
 
   const deleteProduct = (id: string) => {
-    // Implement the logic for deleting a product
+    fetch(`http://localhost:8080/api/v1/products/${id}`, {
+      method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Update the customers state to remove the deleted customer
+      setProducts(products.filter(products => products._id !== id));
+    });
   };
 
   const columns = [
     {
       id: 'id',
-      label: 'id',
-      format: (value: any, record: Product) => record.ProductID
+      label: 'ID',
+      format: (value: any, record: Product) => record._id
     },
     {
       id: 'name',
@@ -61,7 +66,7 @@ const Products = () => {
     },
     {
       id: 'quantity',
-      label: 'quantity',
+      label: 'Quantity',
       format: (value: any, record: Product) => record.ProductQuantity
     },
     {
@@ -69,16 +74,17 @@ const Products = () => {
       label: 'Actions',
       format: (value: any, record: Product) => (
         <div style={{ display: 'flex', gap: '8px' }}>
-          <EditButton
+          <EditButtonProduct
             title="Edit"
-            handleClick={() => navigate("/products/edit")}
+            handleClick={() => navigate(`/products/edit`, { state: { product: record } })}
             backgroundColor="#475be8"
             color="#fcfcfc"
             icon={<EditIcon />}
+            data={record}
           />
           <DeleteButton
             title="Delete"
-            handleClick={() => navigate("/products/edit")} //navigates for now but need to make delete
+            handleClick={() => deleteProduct(record._id)}
             backgroundColor="#ff1744" 
             color="#fcfcfc"
             icon={<DeleteIcon />}
@@ -111,7 +117,7 @@ const Products = () => {
           </TableHead>
           <TableBody>
             {products.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((product) => (
-              <TableRow key={product.ProductID}>
+              <TableRow key={product._id}>
                 {columns.map((column) => (
                   <TableCell key={column.id}>{column.format ? column.format(product[column.id], product) : product[column.id]}</TableCell>
                 ))}

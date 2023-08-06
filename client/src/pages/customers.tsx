@@ -46,7 +46,7 @@ const Customers = () => {
   const columns = [
     {
       id: '_id',
-      label: 'id',
+      label: 'ID',
       format: (value: any, record: Customer) => record._id
     },
     {
@@ -56,32 +56,32 @@ const Customers = () => {
     },
     {
       id: 'phone number', //change?
-      label: 'phone number',
+      label: 'Phone Number',
       format: (value: any, record: Customer) => record.PhoneNumber
     },
     {
       id: 'email',
-      label: 'email',
+      label: 'Email',
       format: (value: any, record: Customer) => record.Email
     },
     {
       id: 'purchase history', //change?
-      label: 'purchase history',
+      label: 'Purchase History',
       format: (value: any, record: Customer) => record.PurchaseHistory
     },
     {
       id: 'account balance',
-      label: 'account balance',
+      label: 'Account Balance',
       format: (value: any, record: Customer) => record.AccountBalance
     },
     {
       id: 'shipping information',
-      label: 'shipping information',
+      label: 'Shipping Information',
       format: (value: any, record: Customer) => record.ShippingInformation
     },
     {
       id: 'preferred communication method',
-      label: 'preferred communication method',
+      label: 'Preferred Communication Method',
       format: (value: any, record: Customer) => record.PreferredCommunicationMethod
     },
     {

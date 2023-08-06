@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import CustomerForm from 'components/common/CustomerForm';
 
 const CreateCustomer = () => {
-  const navigate = useNavigate();
+  
+    const navigate = useNavigate();
 
   const {
       refineCore: { onFinish, formLoading },
@@ -14,7 +15,7 @@ const CreateCustomer = () => {
   } = useForm(); 
 
   const onFinishHandler = async (data: FieldValues) => {
-    const { CustomerID, ...otherData } = data; // Exclude the CustomerID field
+    const { CustomerID, ...otherData } = data; 
     try {
         const response = await axios.post('http://localhost:8080/api/v1/customers', otherData); // Send otherData instead of data
         if (response.status >= 200 && response.status < 300) {

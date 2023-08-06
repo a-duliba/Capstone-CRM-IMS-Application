@@ -10,6 +10,8 @@ import axios from 'axios';
 
 const CreateProduct = () => {
 
+  const navigate = useNavigate();
+
   const {
     refineCore: { onFinish, formLoading },
     register,
@@ -17,7 +19,22 @@ const CreateProduct = () => {
 } = useForm(); 
 
 const onFinishHandler = async (data: FieldValues) => {
-
+  try {
+      const response = await axios.post('http://localhost:8080/api/v1/products', data);
+      if (response.status >= 200 && response.status < 300) {
+          navigate('/products');
+      } else {
+          console.log(response.data);
+      }
+  } catch (error: any) {
+      if (error.response) {
+          console.error('Error', error.response.status, error.response.data);
+      } else if (error.request) {
+          console.error('Error', error.request);
+      } else {
+          console.error('Error', error.message);
+      }
+  }
 };
 
   return (

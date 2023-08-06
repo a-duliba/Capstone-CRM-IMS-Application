@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
-import { FormProps } from "interfaces/common";
+import { FormProps } from "interfaces/products";
 import CustomButton from "./CustomButton";
 
 const Form = ({
@@ -16,6 +16,7 @@ const Form = ({
     handleSubmit,
     formLoading,
     onFinishHandler,
+    initialData,
 }: FormProps) => {
     return (
         <Box>
@@ -51,9 +52,8 @@ const Form = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            {...register("ProductName", {
-                                required: true
-                              })} 
+                            defaultValue={initialData?.ProductName}
+                            {...register("ProductName", { required: true })} 
                         />
                     </FormControl>
                     <FormControl>
@@ -73,9 +73,8 @@ const Form = ({
                             id="outlined-basic"
                             color="info"
                             variant="outlined"
-                            {...register("ProductName", {
-                                required: true
-                              })}
+                            defaultValue={initialData?.ProductDescription}
+                            {...register("ProductDescription", { required: true })}
                         />
                     </FormControl>
 
@@ -96,11 +95,9 @@ const Form = ({
                                 required
                                 id="outlined-basic"
                                 color="info"
-                                type="number"
                                 variant="outlined"
-                                {...register("ProductName", {
-                                    required: true
-                                  })}
+                                defaultValue={initialData?.ProductPrice}
+                                {...register("ProductPrice", { required: true })}
                             />
                         </FormControl>
                         <FormControl>
@@ -119,18 +116,16 @@ const Form = ({
                                 required
                                 id="outlined-basic"
                                 color="info"
-                                type="number"
                                 variant="outlined"
-                                {...register("ProductName", {
-                                    required: true
-                                  })}
+                                defaultValue={initialData?.ProductQuantity}
+                                {...register("ProductQuantity", { required: true })}
                             />
                         </FormControl>
                     </Stack>
                     <Stack direction="row" gap={4}>
                         <CustomButton
                             type="submit"
-                            title={formLoading ? "Submitting..." : "Submit"}
+                            title={formLoading ? "Saving..." : "Save"}
                             backgroundColor="#475be8"
                             color="#fcfcfc"
                         />

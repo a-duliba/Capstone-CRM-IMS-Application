@@ -1,57 +1,38 @@
 export interface Product {
-    ProductID: string;
     ProductName: string;
     ProductDescription: string;
     ProductPrice: string;
     ProductQuantity: string;
 
-    [key: string]: any; //Index signature to allow any string as an index
-  }
-
-  export interface ProductCardProps {
-    ProductID?: BaseKey | undefined,
-    ProductName: string;
-    ProductDescription: string;
-    ProductPrice: string;
-    ProductQuantity: string;
-  }
+    [key: string]: any; 
+}
 
   export interface FormValues {
     name: string,
     description: string,
     price: string,
     quantity: string,
-    //price: number | undefined,
+
 }
 
-/*
-  import { BaseKey } from '@pankod/refine-core';
+export interface FormProps {
+  type: string,
+  register: any,
+  onFinish?: (values: FieldValues) => Promise<void | CreateResponse<BaseRecord> | UpdateResponse<BaseRecord>>,
+  formLoading: boolean,
+  handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
+  onFinishHandler: (data: FieldValues) => Promise<void> | void,
+  initialData?: Product; 
+}
 
-export interface FormFieldProp {
+export interface CustomButtonProps {
+  type?: string,
   title: string,
-  labelName: string
+  backgroundColor: string,
+  color: string,
+  fullWidth?: boolean,
+  icon?: ReactNode,
+  disabled?: boolean,
+  handleClick?: (data?: any) => void
+  data?: any
 }
-
-export interface FormValues {
-    title: string,
-    description: string,
-    propertyType: string,
-    location: string,
-    price: number | undefined,
-}
-
-export interface PropertyCardProps {
-  id?: BaseKey | undefined,
-  title: string,
-  location: string,
-  price: string,
-  photo: string,
-}
-
-export interface ProductCardProps {
-  ProductID?: BaseKey | undefined,
-  ProductName: string;
-  ProductDescription: string;
-  ProductPrice: string;
-  ProductQuantity: string;
-  */
