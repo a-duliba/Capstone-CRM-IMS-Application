@@ -121,6 +121,27 @@ const Form = ({
                                 {...register("ProductQuantity", { required: true })}
                             />
                         </FormControl>
+                        <FormControl>
+                            <FormHelperText
+                                sx={{
+                                    fontWeight: 500,
+                                    margin: "10px 0",
+                                    fontSize: 16,
+                                    color: "#11142d",
+                                }}
+                            >
+                                Enter product category
+                            </FormHelperText>
+                            <TextField
+                                fullWidth
+                                required
+                                id="outlined-basic"
+                                color="info"
+                                variant="outlined"
+                                defaultValue={initialData?.ProductCategory}
+                                {...register("ProductCategory", { required: true })}
+                            />
+                        </FormControl>
                     </Stack>
                     <Stack direction="row" gap={4}>
                         <CustomButton

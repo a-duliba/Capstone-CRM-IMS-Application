@@ -70,6 +70,11 @@ const Products = () => {
       format: (value: any, record: Product) => record.ProductQuantity
     },
     {
+      id: 'category',
+      label: 'Category',
+      format: (value: any, record: Product) => record.ProductCategory
+    },
+    {
       id: 'actions',
       label: 'Actions',
       format: (value: any, record: Product) => (

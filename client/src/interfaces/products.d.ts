@@ -3,6 +3,7 @@ export interface Product {
     ProductDescription: string;
     ProductPrice: string;
     ProductQuantity: string;
+    ProductCategory: string;
 
     [key: string]: any; 
 }
