@@ -1,9 +1,12 @@
 export interface Product {
     ProductName: string;
     ProductDescription: string;
-    ProductPrice: string;
-    ProductQuantity: string;
+    ProductPrice: Number;
+    ProductQuantity: Number;
     ProductCategory: string;
+    yearlyTotalSoldUnits: Number;
+    yearlySalesTotal: Number;
+
 
     [key: string]: any; 
 }
