@@ -10,41 +10,43 @@ import Button from "@mui/material/Button";
 
 const TotalSalesOptions: ApexOptions = {
   chart: {
-    type: 'bar', // specify the type as 'bar'
+    type: 'bar', 
     toolbar: {
       show: true,
     },
   },
-xaxis: {
-  categories: [
-    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-  ],
-},
-yaxis: {
-  title: {
-    text: "$ (Dollars)",
+  xaxis: {
+    categories: [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+    ],
   },
-  max: 65000,
-},
-fill: {
-  opacity: 1,
-},
-markers: {
-  size: 6,
-},
-tooltip: {
-  y: {
-    formatter: (val: number) => ` ${val}$`,
+  yaxis: {
+    title: {
+      text: "$ (Dollars)",
+    },
+    max: 65000,
   },
-},
-plotOptions: {
-  bar: {
-    columnWidth: "95%", // Adjust the bar width as needed (values between "0%" and "100%")
-    dataLabels: {
-      position: "top", // Display data labels on top of the bars
+  fill: {
+    opacity: 1,
+  },
+  markers: {
+    size: 6,
+  },
+  plotOptions: {
+    bar: {
+      columnWidth: "95%",
     },
   },
-},
+  dataLabels: {
+    enabled: false,  
+  },
+  tooltip: {
+    y: {
+      formatter: function (val: number) {
+        return `$${val.toLocaleString()}`;
+      },
+    },
+  },
 };
 
 const TotalSales = () => {
@@ -99,16 +101,17 @@ useEffect(() => {
       display="flex"
       flexDirection="column"
       borderRadius="15px"
-      width={1420}
+      width="100%"  
+      mx="auto"  
     >
       <Typography fontSize={24} fontWeight={700} color="#11142d">
         {title}
       </Typography>
 
       <Stack my="20px" direction="row" gap={4} flexWrap="wrap" width="100%">
-        <Typography fontSize={28} fontWeight={700} color="#11142d">
-          ${totalSales.toFixed(2)}
-        </Typography>
+      <Typography fontSize={28} fontWeight={700} color="#11142d">
+        ${totalSales.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+      </Typography>
       </Stack>
 
       <Button onClick={handleShowTotalSales}>Show Original Sales</Button>
@@ -121,7 +124,7 @@ useEffect(() => {
           series={[
             {
               name: "Monthly Sales",
-              data: showTotalSalesData ? monthlySalesData.map(point => point[1]) : [],
+              data: showTotalSalesData ? monthlySalesData.map((point) => point[1]) : [],
             },
             {
               name: "Next Year's Predicted Sales",

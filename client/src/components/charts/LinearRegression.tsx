@@ -16,8 +16,8 @@ const TotalSalesChartOptions: ApexOptions = {
   },
   stroke: {
     curve: "smooth",
-    width: 3, // Increase the width to make it a solid line
-    dashArray: [0], // Set dash array to [0] for a solid line
+    width: 3, 
+    dashArray: [0], 
   },
   xaxis: {
     categories: [
@@ -37,7 +37,9 @@ const TotalSalesChartOptions: ApexOptions = {
   },
   tooltip: {
     y: {
-      formatter: (val: number) => ` ${val}$`,
+      formatter: function (val: number) {
+        return `$${val.toLocaleString()}`;
+      },
     },
   },
 };
@@ -81,10 +83,11 @@ const LinearRegression = () => {
       p={4}
       bgcolor="#fcfcfc"
       id="chart"
-      minWidth={490}
       display="flex"
       flexDirection="column"
       borderRadius="15px"
+      width="100%"  
+      mx="auto"  
     >
       <Typography fontSize={24} fontWeight={700} color="#11142d">
         Sales by Month

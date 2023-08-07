@@ -12,7 +12,7 @@ const PieChartOptions: ApexOptions = {
   chart: {
     type: "pie",
   },
-  labels: [], // We'll fill this in with the product names
+  labels: [], 
   responsive: [
     {
       breakpoint: 480,
@@ -50,7 +50,8 @@ const PieChart = () => {
       display="flex"
       flexDirection="column"
       borderRadius="15px"
-      width={1420}
+      width="100%"  
+      mx="auto"  
     >
       <Typography fontSize={24} fontWeight={700} color="#11142d">
         Yearly Sales by Category
@@ -60,38 +61,48 @@ const PieChart = () => {
       <Button onClick={() => setShowPredictedSales(true)}>Show Predicted Sales</Button>
   
       <Grid container spacing={2}>
-        {categories.map((category, index) => {
-          const productsInCategory = productData.filter(
-            (product: Product) => product.ProductCategory === category
-          );
-          const options = {
-            ...PieChartOptions,
-            labels: productsInCategory.map((product: Product) => product.ProductName),
-          };
-          const series = productsInCategory.map((product: Product) => Number(product.yearlySalesTotal));
-  
-          // Calculate the linear regression for each product's sales data
-          const regressionData: [number, number][] = productsInCategory.map((product, index) => [index, Number(product.yearlySalesTotal)]);
-          const result = regression.linear(regressionData);
-  
-          // Use the slope and intercept of the regression line to predict next year's sales.
-          const nextYearSales = productsInCategory.map((_, index) => result.equation[0] * (index + 1) + result.equation[1]);
-  
-          return (
-            <Grid item xs={6} key={index}>
-              <Box border="1px solid #ccc" p={2} style={{ borderRadius: "10px" }}>
-                <ReactApexChart
-                  options={options}
-                  series={showPredictedSales ? nextYearSales : series}
-                  type="pie"
-                  height={250}
-                  style={{ width: "100%" }}
-                />
-              </Box>
-            </Grid>
-          );
-        })}
-      </Grid>
+    {categories.map((category, index) => {
+      const productsInCategory = productData.filter(
+        (product: Product) => product.ProductCategory === category
+      );
+      const options = {
+        ...PieChartOptions,
+        labels: productsInCategory.map((product: Product) => product.ProductName),
+        tooltip: {
+          y: {
+            formatter: function (value: number) {
+              return `$${value.toLocaleString()}`;
+            },
+          },
+        },
+      };
+      const series = productsInCategory.map((product: Product) => Number(product.yearlySalesTotal));
+
+      const regressionData: [number, number][] = productsInCategory.map((product, index) => [index, Number(product.yearlySalesTotal)]);
+      const result = regression.linear(regressionData);
+
+      const nextYearSales = productsInCategory.map((_, index) => result.equation[0] * (index + 1) + result.equation[1]);
+
+      return (
+        <Grid item xs={6} key={index}>
+          <Box border="1px solid #ccc" p={2} style={{ borderRadius: "10px" }}>
+            {/* Display the category name */}
+            <Typography variant="h6" color="primary" gutterBottom>
+              {category}
+            </Typography>
+
+            <ReactApexChart
+              options={options}
+              series={showPredictedSales ? nextYearSales : series}
+              type="pie"
+              height={250}
+              style={{ width: "100%" }}
+            />
+          </Box>
+        </Grid>
+      );
+    })}
+  </Grid>
     </Box>
   );
 };

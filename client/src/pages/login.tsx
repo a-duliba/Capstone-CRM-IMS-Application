@@ -3,7 +3,7 @@ import { Box, Container, TextField, Button, Typography } from "@pankod/refine-mu
 import { useEffect, useRef, useState } from "react";
 
 import { CredentialResponse } from "../interfaces/google";
-import logo from "../assets/logo.png";
+import { logo } from "assets";
 
 export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
