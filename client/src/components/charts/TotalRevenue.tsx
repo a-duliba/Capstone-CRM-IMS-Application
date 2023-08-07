@@ -91,49 +91,50 @@ useEffect(() => {
     .then(data => setSalesData(data));
 }, []);
 
-return (
-  <Box
-    p={4}
-    bgcolor="#fcfcfc"
-    id="chart"
-    display="flex"
-    flexDirection="column"
-    borderRadius="15px"
-    width={1420} 
-  >
-     <Typography fontSize={24} fontWeight={700} color="#11142d">
-      {title}
-    </Typography>
-
-    <Stack my="20px" direction="row" gap={4} flexWrap="wrap" width="100%">
-      <Typography fontSize={28} fontWeight={700} color="#11142d">
-        ${totalSales.toFixed(2)}
+  return (
+    <Box
+      p={4}
+      bgcolor="#fcfcfc"
+      id="chart"
+      display="flex"
+      flexDirection="column"
+      borderRadius="15px"
+      width={1420}
+    >
+      <Typography fontSize={24} fontWeight={700} color="#11142d">
+        {title}
       </Typography>
-    </Stack>
 
-    <Button onClick={handleShowTotalSales}>Show Original Sales</Button>
-    <Button onClick={handleShowPredictedSales}>Show Predicted Sales</Button>
-    <Button onClick={handleShowBoth}>Show Both</Button>
+      <Stack my="20px" direction="row" gap={4} flexWrap="wrap" width="100%">
+        <Typography fontSize={28} fontWeight={700} color="#11142d">
+          ${totalSales.toFixed(2)}
+        </Typography>
+      </Stack>
 
-    <ReactApexChart
-      options={TotalSalesOptions}
-      series={[
-        {
-          name: "Monthly Sales",
-          data: showTotalSalesData ? monthlySalesData.map(point => point[1]) : [],
-        },
-        {
-          name: "Next Year's Predicted Sales",
-          data: showPredictedSalesData ? predictedSalesData : [],
-        },
-      ]}
-      type="bar"
-      height={550}
-      style={{ width: "100%" }}
-    />
-  </Box>
-);
+      <Button onClick={handleShowTotalSales}>Show Original Sales</Button>
+      <Button onClick={handleShowPredictedSales}>Show Predicted Sales</Button>
+      <Button onClick={handleShowBoth}>Show Both</Button>
 
+      <Box border="1px solid #ccc" p={2}>
+        <ReactApexChart
+          options={TotalSalesOptions}
+          series={[
+            {
+              name: "Monthly Sales",
+              data: showTotalSalesData ? monthlySalesData.map(point => point[1]) : [],
+            },
+            {
+              name: "Next Year's Predicted Sales",
+              data: showPredictedSalesData ? predictedSalesData : [],
+            },
+          ]}
+          type="bar"
+          height={550}
+          style={{ width: "100%" }}
+        />
+      </Box>
+    </Box>
+  );
 };
 
 export default TotalSales;

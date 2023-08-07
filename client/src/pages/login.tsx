@@ -3,7 +3,7 @@ import { Box, Container, TextField, Button, Typography } from "@pankod/refine-mu
 import { useEffect, useRef, useState} from "react";
 
 import { CredentialResponse } from "../interfaces/google";
-
+import logo from "../assets/logo.png";
 export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
   const { mutate: loginDefault } = useLogin();
@@ -73,9 +73,12 @@ export const Login: React.FC = () => {
           }}
         >
           {/* Title */}
-          <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
-            ChairCare Solutions
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <img src={logo} alt="ChairCare Solutions" style={{ width: '55px', marginRight: '10px' }} />
+            <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
+              ChairCare Solutions
+            </Typography>
+          </Box>
 
           <Box mt={4}>
             {/* Login Form */}

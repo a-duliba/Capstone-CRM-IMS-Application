@@ -74,18 +74,20 @@ const PieChart = () => {
           const regressionData: [number, number][] = productsInCategory.map((product, index) => [index, Number(product.yearlySalesTotal)]);
           const result = regression.linear(regressionData);
 
-          // Use the slope and intercept of the regression line to predict next year's sales
+          // Use the slope and intercept of the regression line to predict next year's sales.
           const nextYearSales = productsInCategory.map((_, index) => result.equation[0] * (index + 1) + result.equation[1]);
 
           return (
             <Grid item xs={6} key={index}>
-              <ReactApexChart
-                options={options}
-                series={showPredictedSales ? nextYearSales : series}
-                type="pie"
-                height={250}
-                style={{ width: "100%" }}
-              />
+              <Box border="1px solid #ccc" p={2}>
+                <ReactApexChart
+                  options={options}
+                  series={showPredictedSales ? nextYearSales : series}
+                  type="pie"
+                  height={250}
+                  style={{ width: "100%" }}
+                />
+              </Box>
             </Grid>
           );
         })}

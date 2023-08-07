@@ -94,21 +94,23 @@ const LinearRegression = () => {
       <Button onClick={handleShowPredictedSales}>Show Predicted Sales</Button>
       <Button onClick={handleShowBoth}>Show Both</Button>
 
-      <Chart
-        options={TotalSalesChartOptions}
-        series={[
-          {
-            name: "Monthly Sales",
-            data: showTotalSalesData ? monthlySalesData.map(point => point[1]) : [],
-          },
-          {
-            name: "Next Year's Predicted Sales",
-            data: showPredictedSalesData ? predictedSalesData : [],
-          },
-        ]}
-        type="line"
-        height={300}
-      />
+      <Box border="1px solid #ccc" p={2}>
+        <Chart
+          options={TotalSalesChartOptions}
+          series={[
+            {
+              name: "Monthly Sales",
+              data: showTotalSalesData ? monthlySalesData.map(point => point[1]) : [],
+            },
+            {
+              name: "Next Year's Predicted Sales",
+              data: showPredictedSalesData ? predictedSalesData : [],
+            },
+          ]}
+          type="line"
+          height={300}
+        />
+      </Box>
     </Box>
   );
 };

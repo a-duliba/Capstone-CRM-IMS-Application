@@ -10,10 +10,6 @@ import {
 const Home = () => {
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color="#11142D">
-        Dashboard
-      </Typography>
-
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <PieChart />
