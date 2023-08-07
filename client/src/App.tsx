@@ -9,9 +9,7 @@ import {
 } from "@pankod/refine-mui";
 
 /* imports for side bar icons */
-import AccountCircleOutlined from "@mui/icons-material/AccountCircleOutlined";
 import PeopleAltOutlined from "@mui/icons-material/PeopleAltOutlined";
-import VillaOutlined from "@mui/icons-material/VillaOutlined";
 import { PostAddOutlined } from "@mui/icons-material";
 
 import routerProvider from "@pankod/refine-react-router-v6";
