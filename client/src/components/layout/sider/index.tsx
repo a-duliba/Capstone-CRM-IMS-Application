@@ -36,7 +36,6 @@ import React, { useState } from "react";
 
 import { Title as DefaultTitle } from "../title";
 
-
 export const Sider: typeof DefaultSider = ({ render }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [opened, setOpened] = useState(false);

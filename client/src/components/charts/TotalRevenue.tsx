@@ -115,7 +115,7 @@ useEffect(() => {
       <Button onClick={handleShowPredictedSales}>Show Predicted Sales</Button>
       <Button onClick={handleShowBoth}>Show Both</Button>
 
-      <Box border="1px solid #ccc" p={2}>
+      <Box border="1px solid #ccc" p={2} style={{ borderRadius: "10px" }}>
         <ReactApexChart
           options={TotalSalesOptions}
           series={[

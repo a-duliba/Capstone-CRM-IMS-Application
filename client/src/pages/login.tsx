@@ -1,9 +1,10 @@
 import { useLogin } from "@pankod/refine-core";
-import { Box, Container, TextField, Button, Typography } from "@pankod/refine-mui";
-import { useEffect, useRef, useState} from "react";
+import { Box, TextField, Button, Typography } from "@pankod/refine-mui";
+import { useEffect, useRef, useState } from "react";
 
 import { CredentialResponse } from "../interfaces/google";
 import logo from "../assets/logo.png";
+
 export const Login: React.FC = () => {
   const { mutate: login } = useLogin<CredentialResponse>();
   const { mutate: loginDefault } = useLogin();
@@ -52,59 +53,47 @@ export const Login: React.FC = () => {
   return (
     <Box
       component="div"
-      sx={{ backgroundColor: '#FCFCFC' }}
+      sx={{ backgroundColor: '#FCFCFC', height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}
     >
-      <Container
-        component="main"
-        maxWidth="xs"
+      <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          height: "100vh",
+          border: '1px solid #ccc', // Add border here
+          borderRadius: '8px', // Add border radius for a rounded look
+          maxWidth: "400px",
+          padding: "20px",
+          width: "100%",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          {/* Title */}
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <img src={logo} alt="ChairCare Solutions" style={{ width: '55px', marginRight: '10px' }} />
-            <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
-              ChairCare Solutions
-            </Typography>
-          </Box>
-
-          <Box mt={4}>
-            {/* Login Form */}
-            <form onSubmit={handleSubmit}>
-              <TextField label="Username" variant="outlined" fullWidth sx={{ mb: 2 }} value={username} onChange={(e) => setUsername(e.target.value)} />
-              <TextField
-                label="Password"
-                variant="outlined"
-                fullWidth
-                type="password"
-                sx={{ mb: 2 }}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Button type="submit" variant="contained" fullWidth sx={{ '&:hover': { backgroundColor: '#4CAF50' } }}>
-                Submit
-              </Button>
-            </form>
-
-            {/* Google Login Button */}
-            <Box mt={2}>
-              <GoogleButton />
-            </Box>
-          </Box>
+        {/* Title */}
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "center", marginBottom: "20px" }}>
+          <img src={logo} alt="ChairCare Solutions" style={{ width: '55px', marginRight: '10px' }} />
+          <Typography variant="h4" component="h1" sx={{ mb: 1 }}>
+            ChairCare Solutions
+          </Typography>
         </Box>
-      </Container>
+
+        {/* Login Form */}
+        <form onSubmit={handleSubmit}>
+          <TextField label="Username" variant="outlined" fullWidth sx={{ mb: 2 }} value={username} onChange={(e) => setUsername(e.target.value)} />
+          <TextField
+            label="Password"
+            variant="outlined"
+            fullWidth
+            type="password"
+            sx={{ mb: 2 }}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button type="submit" variant="contained" fullWidth sx={{ '&:hover': { backgroundColor: '#4CAF50' } }}>
+            Submit
+          </Button>
+        </form>
+
+        {/* Google Login Button */}
+        <Box mt={2} sx={{ display: "flex", justifyContent: "center" }}>
+          <GoogleButton />
+        </Box>
+      </Box>
     </Box>
   );
 };

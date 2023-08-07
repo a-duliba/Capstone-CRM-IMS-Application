@@ -94,7 +94,7 @@ const LinearRegression = () => {
       <Button onClick={handleShowPredictedSales}>Show Predicted Sales</Button>
       <Button onClick={handleShowBoth}>Show Both</Button>
 
-      <Box border="1px solid #ccc" p={2}>
+      <Box border="1px solid #ccc" p={2} borderRadius="10px" style={{ overflow: "hidden" }}>
         <Chart
           options={TotalSalesChartOptions}
           series={[
