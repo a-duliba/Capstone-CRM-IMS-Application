@@ -8,6 +8,4 @@ router.post('/', createProduct);
 router.put('/:id', updateProduct);
 router.delete('/:id', deleteProduct);
 
-// Add other routes as necessary
-
 export default router;

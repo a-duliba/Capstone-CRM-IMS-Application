@@ -10,7 +10,7 @@ const getAllUsers = async (req, res) => {
     }
 };
 
-const createUser = async (req, res) => { //this is a function creating a user or not if already exists. try for what we want, catch for execptions 
+const createUser = async (req, res) => { 
     try {
         const { name, email, avatar } = req.body; 
 

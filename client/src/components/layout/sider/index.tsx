@@ -360,7 +360,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
           open={opened}
           onClose={() => setOpened(false)}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
             display: { sm: "block", md: "none" },

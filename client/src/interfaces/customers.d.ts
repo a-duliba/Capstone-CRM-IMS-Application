@@ -7,7 +7,7 @@ export interface Customer {
     ShippingInformation: string,
     PreferredCommunicationMethod: string,
 
-    [key: string]: any; //Index signature to allow any string as an index
+    [key: string]: any; 
   }
 
   export interface FormValues {
@@ -27,7 +27,7 @@ export interface FormProps {
   formLoading: boolean,
   handleSubmit: FormEventHandler<HTMLFormElement> | undefined,
   onFinishHandler: (data: FieldValues) => Promise<void> | void,
-  initialData?: Customer; // Add initialData as an optional property of type Customer
+  initialData?: Customer; 
 }
 
 export interface CustomButtonProps {

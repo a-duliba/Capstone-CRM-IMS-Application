@@ -21,17 +21,14 @@ import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
 
 /* Local imports */
-import { 
-  Login, 
-  Home,
-} from "pages";
-
 import Customers from "pages/customers";
 import Products from "pages/products";
 import EditProduct from "pages/edit-product";
 import EditCustomer from "pages/edit-customer";
 import CreateProduct from "pages/create-product";
 import CreateCustomer from "pages/create-customer";
+import { Login } from "pages/login";
+import Home from "pages/home";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {

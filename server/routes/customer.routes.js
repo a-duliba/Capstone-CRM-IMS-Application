@@ -8,12 +8,4 @@ router.post('/', createCustomer);
 router.delete('/:id', deleteCustomer); 
 router.put('/:id', updateCustomer);
 
-
-//router for update
-router.route("/").get(getAllCustomers);
-router.route("/").post(createCustomer);
-
-
-// Add other routes as necessary
-
 export default router;

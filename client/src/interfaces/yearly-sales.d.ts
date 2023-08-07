@@ -19,6 +19,6 @@ export interface MonthlyData {
     monthlyData: MonthlyData[];
     dailyData: DailyData[];
   
-    [key: string]: any; //Index signature to allow any string as an index
+    [key: string]: any; 
   }
   

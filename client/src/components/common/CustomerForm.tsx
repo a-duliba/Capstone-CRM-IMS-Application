@@ -37,24 +37,24 @@ const CustomerForm = ({
                 >
                     <FormControl>
                         <FormHelperText
-                            sx={{
-                                fontWeight: 500,
-                                margin: "10px 0",
-                                fontSize: 16,
-                                color: "#11142d",
-                            }}
+                        sx={{
+                            fontWeight: 500,
+                            margin: "10px 0",
+                            fontSize: 16,
+                            color: "#11142d",
+                        }}
                         >
-                            Enter customer name
+                        Customer Name
                         </FormHelperText>
                         <TextField
-                            fullWidth
-                            required
-                            id="outlined-basic"
-                            color="info"
-                            variant="outlined"
-                            defaultValue={initialData?.CustomerName}
-                            {...register("CustomerName", { required: true })}
-                            
+                        fullWidth
+                        required
+                        id="outlined-basic"
+                        color="info"
+                        variant="outlined"
+                        defaultValue={initialData?.CustomerName}
+                        {...register("CustomerName", { required: true })}
+                        placeholder="Please enter a name"
                         />
                     </FormControl>
                     <FormControl>
@@ -66,7 +66,7 @@ const CustomerForm = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter phone number here
+                           Phone Number 
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -76,6 +76,7 @@ const CustomerForm = ({
                             variant="outlined"
                             defaultValue={initialData?.PhoneNumber}
                             {...register("PhoneNumber", { required: true })}
+                            placeholder="Please enter a valid phone number (xxx-xxx-xxxx)"
                         />
                     </FormControl>
 
@@ -88,7 +89,7 @@ const CustomerForm = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter email here
+                            Email
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -98,6 +99,7 @@ const CustomerForm = ({
                             variant="outlined"
                             defaultValue={initialData?.Email}
                             {...register("Email", { required: true })}
+                            placeholder="Please enter an email"
                         />
                     </FormControl>
 
@@ -111,7 +113,7 @@ const CustomerForm = ({
                                     color: "#11142d",
                                 }}
                             >
-                                Enter purchase history here
+                                Purchase history
                             </FormHelperText>
                             <TextField
                                 fullWidth
@@ -121,6 +123,7 @@ const CustomerForm = ({
                                 variant="outlined"
                                 defaultValue={initialData?.PurchaseHistory}
                                 {...register("PurchaseHistory", { required: true })}
+                                placeholder="Please enter a number"
                             />
                         </FormControl>
                         <FormControl>
@@ -132,7 +135,7 @@ const CustomerForm = ({
                                     color: "#11142d",
                                 }}
                             >
-                                Enter account balance here
+                                Account Balance
                             </FormHelperText>
                             <TextField
                                 fullWidth
@@ -142,6 +145,7 @@ const CustomerForm = ({
                                 variant="outlined"
                                 defaultValue={initialData?.AccountBalance}
                                 {...register("AccountBalance", { required: true })}
+                                placeholder="Please enter a number"
                             />
                         </FormControl>
                     </Stack>
@@ -155,7 +159,7 @@ const CustomerForm = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter shipping information here
+                            Shipping Information
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -165,6 +169,7 @@ const CustomerForm = ({
                             variant="outlined"
                             defaultValue={initialData?.ShippingInformation}
                             {...register("ShippingInformation", { required: true })}
+                            placeholder="Please enter valid shipping information"
                         />
                     </FormControl>
 
@@ -177,7 +182,7 @@ const CustomerForm = ({
                                 color: "#11142d",
                             }}
                         >
-                            Enter perferred method of communication here
+                            Preferred Method of Communication
                         </FormHelperText>
                         <TextField
                             fullWidth
@@ -187,6 +192,7 @@ const CustomerForm = ({
                             variant="outlined"
                             defaultValue={initialData?.PreferredCommunicationMethod}
                             {...register("PreferredCommunicationMethod", { required: true })}
+                            placeholder="Please enter (Email, SMS, Mail)"
                         />
                     </FormControl>
 

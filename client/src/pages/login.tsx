@@ -36,11 +36,9 @@ export const Login: React.FC = () => {
         });
         window.google.accounts.id.renderButton(divRef.current, {
           theme: "filled_blue",
-          size: "medium", // Use 'large' size for the Google button
+          size: "medium", 
           type: "standard",
         });
-
-      //<Button variant="contained" fullWidth sx={{ '&:hover': { backgroundColor: '#4CAF50' } }}>
       
       } catch (error) {
         console.log(error);
@@ -55,8 +53,8 @@ export const Login: React.FC = () => {
       component="div"
       sx={{
         backgroundColor: '#FCFCFC',
-        border: '1px solid #ccc', // Add border here
-        borderRadius: '8px', // Add border radius for a rounded look
+        border: '1px solid #ccc', 
+        borderRadius: '8px', 
       }}
     >
       <Container
@@ -102,8 +100,7 @@ export const Login: React.FC = () => {
                 Submit
               </Button>
             </form>
-
-            {/* Google Login Button */}
+            
             <Box mt={2}>
               <GoogleButton />
             </Box>

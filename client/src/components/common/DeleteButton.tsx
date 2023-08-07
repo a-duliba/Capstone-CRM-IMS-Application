@@ -16,23 +16,23 @@ const DeleteButton = ({
       type={type === "submit" ? "submit" : "button"}
       sx={{
         flex: fullWidth ? 1 : "unset",
-        padding: "6px 12px", // Smaller padding
+        padding: "6px 12px", 
         width: fullWidth ? "100%" : "fit-content",
-        minWidth: 100, // Smaller minWidth
+        minWidth: 100, 
         backgroundColor,
         color,
-        fontSize: 14, // Smaller fontSize
+        fontSize: 14, 
         fontWeight: 600,
-        gap: "8px", // Smaller gap
+        gap: "8px", 
         textTransform: "capitalize",
         "&:hover": {
           opacity: 0.9,
           backgroundColor,
         },
-        borderColor: "red", // Add this to set the border color
+        borderColor: "red", 
       }}
-      startIcon={icon} // Use the icon prop directly as the startIcon
-      onClick={handleClick} // onClick={() => deleteProduct(record.ProductID)}
+      startIcon={icon} 
+      onClick={handleClick} 
     >
       {title}
     </Button>

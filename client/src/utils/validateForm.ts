@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import { FormValues } from 'interfaces/products';
 
 export const validateForm = (formValues: FormValues) => {
