@@ -15,7 +15,6 @@ import { dataCustomers } from './data/customer.js';
 import { dataProducts } from './data/product.js'
 import { dataYearlySales } from './data/yearly-sales.js';
 
-
 dotenv.config();
 
 const app = express();
@@ -36,11 +35,6 @@ const startServer = async () => {
     connectDB(process.env.MONGODB_URL);
 
     app.listen(8080, () => console.log('Server started on port http://localhost:8080'));
-
-    //Uncomment these and use only once to load data. After launching and saving this data. Please comment out again and verify data has been loaded to database. 
-    //Customer.insertMany(dataCustomers); 
-    //Product.insertMany(dataProducts); 
-    //Sales.insertMany(dataYearlySales); 
 
   } catch (error) {
     console.log(error);
