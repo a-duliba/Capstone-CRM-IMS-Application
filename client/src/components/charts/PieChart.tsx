@@ -68,13 +68,6 @@ const PieChart = () => {
       const options = {
         ...PieChartOptions,
         labels: productsInCategory.map((product: Product) => product.ProductName),
-        tooltip: {
-          y: {
-            formatter: function (value: number) {
-              return `$${value.toLocaleString()}`;
-            },
-          },
-        },
       };
       const series = productsInCategory.map((product: Product) => Number(product.yearlySalesTotal));
 

@@ -40,13 +40,6 @@ const TotalSalesOptions: ApexOptions = {
   dataLabels: {
     enabled: false,  
   },
-  tooltip: {
-    y: {
-      formatter: function (val: number) {
-        return `$${val.toLocaleString()}`;
-      },
-    },
-  },
 };
 
 const TotalSales = () => {

@@ -35,13 +35,6 @@ const TotalSalesChartOptions: ApexOptions = {
   markers: {
     size: 6,
   },
-  tooltip: {
-    y: {
-      formatter: function (val: number) {
-        return `$${val.toLocaleString()}`;
-      },
-    },
-  },
 };
 
 const LinearRegression = () => {
